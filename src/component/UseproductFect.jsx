@@ -47,6 +47,7 @@ const handleCart=(e)=>{
     axios.post('http://localhost:3000/addToCart', productFeatures)
     .then((response)=>{
       console.log(response);
+      history.push('/cart')
     })
   }
 
@@ -64,6 +65,7 @@ const handleCart=(e)=>{
          <div class="col-sm-12">       
            <div >
           <h1 class="product_taital title">Our Products</h1>
+          
            <div class="col-lg col-sm">
                     <div className="product_box">
                        <h3 className="bursh_text title">{names}</h3>
@@ -88,7 +90,7 @@ const handleCart=(e)=>{
                         
                         <button className='btn  addtocartbutton ' >
                         
-                                 <AddShoppingCartIcon color='primary'/>
+                               <div><AddShoppingCartIcon color='primary'/>add to cart</div>  
                              
                              </button>
                             {/* <button >add to cart</button> */}

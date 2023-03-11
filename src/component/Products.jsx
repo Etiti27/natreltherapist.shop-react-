@@ -18,7 +18,7 @@ import axios from 'axios';
 
 function Products() {
 
-const url=`http://localhost:3000/data`
+const url=`/data`
    const {products:items, isPending, error}=useFetch(url)
    items&&items.map((item, i)=>{
       console.log(item);
