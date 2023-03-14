@@ -90,7 +90,7 @@ const handleCart=(e)=>{
                         
                         <button className='btn  addtocartbutton ' >
                         
-                               <div><AddShoppingCartIcon color='primary'/>add to cart</div>  
+                               <div><AddShoppingCartIcon color='primary'/> Buy Now</div>  
                              
                              </button>
                             {/* <button >add to cart</button> */}

@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProductFetch from './component/ProductFetch';
 import UseproductFect from './component/UseproductFect';
 import Cart from './component/Cart';
+import Forms from './component/Formik';
 
 
 
@@ -36,7 +37,7 @@ function App() {
    <Router>
       <Nav />
       <Switch>
-      <Route exact path="/">
+      <Route  exact path="/">
       <Banner />
       <UseproductFect />
      
@@ -56,7 +57,7 @@ function App() {
       </Switch>
       <Copyright />
       
-      
+      <Forms />
       
     
       </Router>

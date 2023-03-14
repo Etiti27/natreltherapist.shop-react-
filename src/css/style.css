@@ -915,7 +915,7 @@ button {
 .copyright_section {
     width: 100%;
     float: left;
-    background-color: #252525;
+    background-color: #008000;
     height: auto;
 }
 
@@ -1118,7 +1118,7 @@ opacity: 0.5;
     .shopping-cart .def-number-input.number-input input.btn.btn-link[type=number],
     .shopping-cart .def-number-input.number-input input.md-toast-close-button[type=number]:hover,
     .shopping-cart .def-number-input.number-input input.md-toast-close-button[type=number]:focus {
-    color: #212529 !important;
+    color: #008037 !important;
     }
     
     .shopping-cart .def-number-input.number-input button {
@@ -1132,10 +1132,31 @@ opacity: 0.5;
     
     .shopping-cart .def-number-input.number-input button.minus:before,
     .shopping-cart .def-number-input.number-input button.minus:after {
-    background-color: #9e9e9e;
+    background-color: #008037;
     }
     
     .shopping-cart .def-number-input.number-input button.plus:before,
     .shopping-cart .def-number-input.number-input button.plus:after {
-    background-color: #4285f4;
+    background-color:#008037;
+    }
+    .text-primary{
+        color: #008000;
+        
+    }
+    span{
+        color:red
+    }
+    aside{
+        color:red;
+        font-style: italic;
+        text-transform: dotted;
+        text-decoration-style: dotted;
+        font-size: 80%;
+    }
+    .proceed-to-payment{
+        background-color:#008000;
+        color: white;
+      
+        float: right;
+        
     }
