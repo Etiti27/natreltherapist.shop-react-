@@ -4,14 +4,16 @@ import React from 'react'
 import UseFetch from './UseFetch'
 import loader from '../images/loader-waiting.gif'
 import DeleteIcon from '@mui/icons-material/Delete';
-import BillingAddress from './BillingAddress';
+import BillingAddress from './ineffectiveComponents/BillingAddress';
+import StripePayButton from './StripePayButton';
+import  Form  from './ineffectiveComponents/Formik';
 
 
 function Cart() {
     const url="http://localhost:3000/cart"
     const {products, error, isLoading}= UseFetch(url)
     
-    
+   
     
   return (
 
@@ -23,14 +25,17 @@ function Cart() {
           <div>{error && <p>{error}</p>}</div></div>
          
 
-          {/* /*cart section*/}
-<section className="h-100 " style={{backgroundColor: "white"}}>
+  
+
+    <section className="h-100 " style={{backgroundColor: "white"}}>
   <div className="container h-100 py-5">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col">
         <div className="card shopping-cart" style={{borderRadius: "15px"}}>
           <div className="card-body text-black">
+          {products && products.map((product)=>{
 
+return(<div>
             <div className="row">
               <div className="col-lg-6 px-5 py-4">
 
@@ -43,10 +48,11 @@ function Cart() {
                   </div>
                   <div className="flex-grow-1 ms-3">
                     <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 className="text-primary" >Samsung Galaxy M11 64GB       <span style={{paddingLeft:"20%"}}><button><DeleteIcon color="primary"/></button></span></h5> 
-                    <h6 style={{color: "#008037"}}></h6>
-                    <div className="d-flex align-items-center">
-                      <p className="fw-bold mb-0 me-5 pe-3">799$</p>
+               
+                      <h5 className="text-primary" >{product.names}       <span style={{paddingLeft:"20%"}}><button><DeleteIcon color="primary"/></button></span></h5> 
+                      <p>{product.desc}</p>
+                      <div className="d-flex align-items-center">
+                      <p className="fw-bold mb-0 me-5 pe-3">€ {product.salePrice}</p>
                       <div className="def-number-input number-input safari_only">
                         <button
                           className="minus"></button>
@@ -56,31 +62,27 @@ function Cart() {
                           className="plus"></button>
                       </div>
                     </div>
+                    <hr className="mb-4" style={{height: "2px", backgroundColor: "#1266f1", opacity: "1"}}/>
+                   
+                    
+                    
+                   
                   </div>
                 </div>
-
-                
-
-                <hr className="mb-4" style={{height: "2px", backgroundColor: "#1266f1", opacity: "1"}}/>
-
-                <div className="d-flex justify-content-between px-x">
-                  <p className="fw-bold">Discount:</p>
-                  <p className="fw-bold">95$</p>
-                </div>
-                <div className="d-flex justify-content-between p-2 mb-2" style={{backgroundColor: "#008037"}}>
-                  <h5 className="fw-bold mb-0">Total:</h5>
-                  <h5 className="fw-bold mb-0">2261$</h5>
-                </div>
-
-              
-
               </div>
               <div className="col-lg-6 px-5 py-4">
 
-                <BillingAddress />
+              
+                <Form 
+                  cartItems={product}
+                />
 
               </div>
             </div>
+            </div>)
+
+                                      
+                   })} 
 
           </div>
         </div>
@@ -88,9 +90,14 @@ function Cart() {
     </div>
   </div>
 </section>
+
+  </div>)
+
+          {/* /*cart section*/}
+
          
-    </div>
-  )
+   
+  
 }
 
 export default Cart

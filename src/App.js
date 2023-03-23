@@ -1,17 +1,17 @@
 
 // import './App.css';
-import Home from './component/Home';
+import Home from './component/ineffectiveComponents/Home';
 import Nav from './component/Nav';
 import "./css/style.css";
 
 
 import Banner from './component/Banner';
-import Products from './component/Products';
+
 import About from './component/About';
-import CustomerReview from './component/CustomerReview';
-import Footer from './component/Footer';
+import CustomerReview from './component/ineffectiveComponents/CustomerReview';
+
 import Copyright from './component/Copyright';
-import CheckLink from './component/Link';
+import CheckLink from './component/ineffectiveComponents/Link';
 import BannerDetail from './component/BannerDetail';
 import ProductDetail from './component/ProductDetail';
 // import Button from '@mui/material-next/Button';
@@ -20,7 +20,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProductFetch from './component/ProductFetch';
 import UseproductFect from './component/UseproductFect';
 import Cart from './component/Cart';
-import Forms from './component/Formik';
+import Forms from './component/ineffectiveComponents/Formik';
+import Payment from "./component/ineffectiveComponents/Payment"
+import StripeSuccess from './component/StripeSuccess';
+
 
 
 
@@ -43,6 +46,7 @@ function App() {
      
       <About />
       </Route>
+      
     
       
       
@@ -52,12 +56,13 @@ function App() {
       <Route exact path='/productdetails'><ProductDetail /></Route>
       <Route exact path='/aboutus'><AboutUs /> </Route>
       <Route exact path='/cart' > <Cart /></Route>
+      <Route exact path='/stripe-success' > <StripeSuccess /></Route>
       
       
       </Switch>
       <Copyright />
       
-      <Forms />
+      {/* <Forms /> */}
       
     
       </Router>

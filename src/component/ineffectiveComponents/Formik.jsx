@@ -2,12 +2,38 @@ import React from 'react'
 import {Formik, Form, Field,ErrorMessage} from "formik"
 import * as Yup from "yup"
 import axios from 'axios';
-import {Link, useHistory} from "react-router-dom"
+import { useHistory} from "react-router-dom"
 
 
 
-function Forms() {
+function Forms({cartItems}) {
     const history= useHistory()
+    
+
+
+    const submit= (data)=>{
+        console.log(data);
+        console.log(cartItems);
+        const allData={...data, 
+            ...cartItems}
+       
+
+    const url=`http://localhost:3000/create-checkout-session`
+    axios.post(url, [allData])
+    .then((res)=>{
+      console.log(res);
+      if(res.status===200){
+        console.log(res.data.datas[0]);
+        window.location.replace(res.data.url);
+        // history.push(res.data)
+        
+        
+      }
+    }).catch((err)=>{
+      console.log(err.message);
+    })
+        }
+   
 const initialValues={
     firstName:"",
     lastName:"",
@@ -53,14 +79,11 @@ const validationSchema=Yup.object().shape({
     .min(3, "too small ")
     .max(7, "too much")
 })
-const onSubmit=(data)=>{
-    axios.post('http://localhost:3000/shippingAddress', data)
-    .then((response)=>{
-      console.log(response);
-})}
+
+
   return (
     <div>
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} >
+    <Formik initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema} >
         <Form>
         <div className="row">
         <div className="col-md-6 mb-3">
@@ -72,6 +95,7 @@ const onSubmit=(data)=>{
                 placeholder="First Name"
                 id="firstName"
                 className="form-control"
+                
             />
             </div>
             <div className="col-md-6 mb-3">
@@ -83,6 +107,7 @@ const onSubmit=(data)=>{
                 placeholder="Enter Your Last Name"
                 id="lastName"
                 className="form-control"
+            
             />
             </div>
          </div>
@@ -96,6 +121,7 @@ const onSubmit=(data)=>{
                 placeholder="Enter Your Email Address"
                 id="email"
                 className="form-control"
+               
             />
             </div>
             <div className="col-md-6 mb-3">
@@ -107,6 +133,7 @@ const onSubmit=(data)=>{
                 placeholder="Enter Your Address"
                 id="address"
                 className="form-control"
+                
             />
             </div>
          </div>
@@ -114,7 +141,7 @@ const onSubmit=(data)=>{
          <div className="col-md-6 mb-3">
              <label>Country:</label>
              <ErrorMessage name="country" component="aside"/>
-             <Field as="select" name="country" placeholder="Country" id="country" className="form-control">
+             <Field as="select" name="country"   placeholder="Country" id="country" className="form-control">
              <option disabled value>choose your country</option>
              <option value="USA">USA</option>
              <option value="Belgium">Belgium</option>
@@ -131,6 +158,7 @@ const onSubmit=(data)=>{
                 placeholder="Enter Your City"
                 id="city"
                 className="form-control"
+               
             />
             </div>
     </div>
@@ -144,10 +172,11 @@ const onSubmit=(data)=>{
                 placeholder="Enter Postal or Zip Code"
                 id="postCode"
                 className="form-control"
+                
             />
             </div>
             </div>
-            <button className="btn proceed-to-payment" type="submit">Proceed To Payment</button>
+            <button className="btn proceed-to-payment" type="submit"  >Proceed To Payment</button>
         
         </Form>
     </Formik>

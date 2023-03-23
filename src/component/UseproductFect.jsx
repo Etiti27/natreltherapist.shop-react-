@@ -33,6 +33,7 @@ function UseproductFect() {
             setQuantity(1)
             setId(product._id)
             setImage(hairElixir)
+            setDesc(product.productDescription)
 
             return {price, salePrice, names, desc, moreDesc, quantity, id, image}
         })
@@ -41,13 +42,16 @@ function UseproductFect() {
 const handleCart=(e)=>{
     e.preventDefault();
     const productFeatures={
-        price, salePrice, names, quantity, id,image
+        price, salePrice, names, desc, quantity, id,image
     }
     console.log(productFeatures);
     axios.post('http://localhost:3000/addToCart', productFeatures)
     .then((response)=>{
       console.log(response);
-      history.push('/cart')
+      if(response.status===200){
+        history.push('/cart')
+      }
+      
     })
   }
 

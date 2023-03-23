@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import useFetch from './UseFetch'
+import useFetch from '../UseFetch'
 import loading from "../images/loader-waiting.gif";
 import hairElixir from "../images/HairElixir.jpeg"
 // import Button from '@mui/material/Button';
