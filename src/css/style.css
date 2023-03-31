@@ -964,6 +964,7 @@ border-radius: 50%
 
 main {
     margin-top: 5%;
+                text-align: center;
           
                 color: #008037;
                 font: 600 2.5em roboto;
@@ -1160,3 +1161,23 @@ opacity: 0.5;
         float: center;
         
     }
+    .transitional {
+        animation: color-change 1s infinite;
+      }
+      
+      @keyframes color-change {
+        0% { color: red; }
+        50% { color: blue; }
+        
+        
+        
+        100% { color:green; }
+      }
+    
+      
+      .empty-cart{
+        background-color:green
+      }
+      .empty-cart:hover{
+        background-color:red
+      }
