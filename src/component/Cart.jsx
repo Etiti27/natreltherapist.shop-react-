@@ -8,7 +8,7 @@ import BillingAddress from './ineffectiveComponents/BillingAddress';
 import StripePayButton from './StripePayButton';
 import  Form  from './ineffectiveComponents/Formik';
 import axios from "axios";
-import hairElixir from "../images/HairElixir.jpeg"
+import hairElixir from "../images/hairelixir.png"
 import { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import pointingDown from "../images/pointingDown.gif"

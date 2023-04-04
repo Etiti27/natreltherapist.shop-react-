@@ -2,7 +2,7 @@
 // import './App.css';
 import Home from './component/ineffectiveComponents/Home';
 import Nav from './component/Nav';
-import "./css/style.css";
+
 
 
 import Banner from './component/Banner';
@@ -16,13 +16,18 @@ import BannerDetail from './component/BannerDetail';
 import ProductDetail from './component/ProductDetail';
 // import Button from '@mui/material-next/Button';
 import AboutUs from './component/AboutUs';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 import ProductFetch from './component/ProductFetch';
 import UseproductFect from './component/UseproductFect';
 import Cart from './component/Cart';
 import Forms from './component/ineffectiveComponents/Formik';
 import Payment from "./component/ineffectiveComponents/Payment"
 import StripeSuccess from './component/StripeSuccess';
+import Test from './component/Test';
+// import 'bootstrap/dist/css/bootstrap.css';
+
+
+
 
 
 
@@ -35,16 +40,17 @@ import StripeSuccess from './component/StripeSuccess';
 
 
 function App() {
+  
   return (
     <div className="App">
    <Router>
       <Nav />
       <Switch>
-      <Route  exact path="/">
-      <Banner />
+      <Route  exact path="/" className="home-route">
+      {/* <Banner /> */}
       <UseproductFect />
      
-      <About />
+      {/* <About /> */}
       </Route>
       
     
@@ -53,9 +59,9 @@ function App() {
       {/* <CustomerReview /> */}
       {/* <Footer /> */}
       <Route exact path="/bannerdetails"> <BannerDetail /></Route>
-      <Route exact path='/productdetails'><ProductDetail /></Route>
+      <Route exact path='/productdetails/:name'><ProductDetail /></Route>
       <Route exact path='/aboutus'><AboutUs /> </Route>
-      <Route exact path='/cart' > <Cart /></Route>
+       <Route exact path='/cart' > <Cart /></Route>
       <Route exact path='/stripe-success' > <StripeSuccess /></Route>
       
       
@@ -63,6 +69,7 @@ function App() {
       <Copyright />
       
       {/* <Forms /> */}
+      {/* <Test /> */}
       
     
       </Router>

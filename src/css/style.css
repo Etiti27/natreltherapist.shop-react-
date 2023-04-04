@@ -124,6 +124,9 @@ h6  {
 button:focus {
     outline: none;
 }
+button:hover {
+    color:rgba(183, 202, 182, 0.9)
+}
 
 ul,
 li,
@@ -217,8 +220,10 @@ button {
 }
 
 .layout_padding {
-    padding-top: 90px;
-    padding-bottom: 0px;
+    padding-top: 0rem;
+    
+    
+    /* background-color: #DFD6B9; */
 }
 
 .padding_0 {
@@ -391,13 +396,13 @@ button {
 
 .product_section {
     width: 100%;
-    float: left;
+   display: flex;
     padding-bottom: 90px;
 }
 
 .product_taital {
     width: 100%;
-    float: left;
+    
     font-size: 40px;
     text-transform: uppercase;
     text-align: center;
@@ -427,11 +432,12 @@ button {
     border: 1px solid #7d7d7c;
     padding: 20px 0px 0px 0px;
     margin-top: 30px;
+    background-color: #DFD6B9;
 }
 
 .bursh_text {
     width: 100%;
-    font-size: 20px;
+    font-size: 1.875rem;
     text-align: center;
     color: #1a1c1b;
     font-weight: 600;
@@ -439,18 +445,20 @@ button {
 
 .lorem_text {
     width: 100%;
-    font-size: 14px;
+    font-size: 1.25rem;
     text-align: center;
-    color: #50504f;
-    margin: 0px;
+    
+    margin: 0rem;
+    /* padding: 0.625rem; */
+    
 }
 
 .image_1 {
     width: 100%;
     text-align: center;
-    margin: 20px 0px;
+    margin: 0px 0px;
     padding: 0px 20px;
-    height: 31.25rem;
+    
 }
 
 .btn_main {
@@ -464,6 +472,8 @@ button {
 .buy_bt {
     float: right;
     width: 100%;
+    color:white;
+    
 }
 
 .buy_bt ul {
@@ -474,7 +484,7 @@ button {
 .buy_bt li a {
     float: right;
     font-size: 12px;
-    color: #252525;
+    color: #008037;
     padding: 5px 10px;
     background-color: #ffffff;
     text-transform: uppercase;
@@ -498,7 +508,17 @@ button {
     /* width: 42%; */
     /* padding-top: 5px; */
     text-align: right;
+    
 }
+.price_text1 {
+    font-size: 16px;
+    color:red;
+    
+    /* width: 42%; */
+    /* padding-top: 5px; */
+    text-align: right;
+}
+
 
 .seemore_bt {
     width: 170px;
@@ -876,6 +896,7 @@ button {
 .main {
     width: 54%;
     float: right;
+    
 }
 
 .social_icon {
@@ -915,7 +936,7 @@ button {
 .copyright_section {
     width: 100%;
     float: left;
-    background-color: #008000;
+    background-color:#6B6666;
     height: auto;
 }
 
@@ -924,7 +945,7 @@ button {
     color: #ffffff;
     text-align: center;
     font-size: 16px;
-    margin: 20px 0px;
+    margin: 0.313rem 0px;
 }
 
 .copyright_text a {
@@ -963,15 +984,17 @@ border-radius: 50%
 
 
 main {
-    margin-top: 5%;
-                text-align: center;
+    padding-top: 2.5%;
+    margin-left: 2%;
+    margin-right: 2%;
+                text-align: right;
           
-                color: #008037;
-                font: 600 2.5em roboto;
-                width: 50ch;
+                color: #81B622;
+                font: 600 2.0em roboto;
+                width: 100%;
                 overflow: hidden;
                 white-space: nowrap;
-                animation: type 10s steps(50) infinite;
+                animation: type 4s steps(50) infinite;
                 /* font-size: xx-large; */
              
             }
@@ -992,13 +1015,21 @@ main {
     align-items: center;
     text-align: center;
     text-shadow: #008037;
+    padding-top:30px
+
    
 }
 .read-more{
     align-items: center;
     margin-left: 50%;
     background-color: #008037;
+    margin-top: 5%;
+    color:white
    
+}
+
+.read-more:hover{
+background-color: #81B622;
 }
 .arrow{
     background-color: #008037;
@@ -1166,12 +1197,9 @@ opacity: 0.5;
       }
       
       @keyframes color-change {
-        0% { color: red; }
-        50% { color: blue; }
-        
-        
-        
-        100% { color:green; }
+        50% { color: white; }
+         
+        100% { color:blue; }
       }
     
       
@@ -1181,3 +1209,50 @@ opacity: 0.5;
       .empty-cart:hover{
         background-color:red
       }
+
+      .display{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .f-container {
+        
+        display: flex;
+      }
+      @media only screen and (max-width: 600px) {
+        .f-container{
+          display: block;
+        }
+      }
+
+      .price {
+        margin-right: 20px;
+        margin-top: -1.0rem;
+      }
+.price1 {
+    margin-right:1.25rem
+}
+     
+.home-route{
+    background-color: #6B6666;
+}
+
+.gobackarrow {
+    font-size:1.5rem;
+    width: 2.5rem;
+    
+}
+.gobackarrow:hover {
+    width: 3.0rem
+}
+
+.frontal {
+    background-image: url("../images/frontalimage.jpeg");
+    padding-top: 200px ;
+    padding-bottom: 200px;
+    background-size:contain
+
+}
+.logo{
+    height:40%;
+    width:40%
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-function stripeSuccess() {
+function StripeSuccess() {
     const myName=`Obinna`
   return (
     <div>
@@ -12,4 +12,4 @@ function stripeSuccess() {
   )
 }
 
-export default stripeSuccess
+export default StripeSuccess
