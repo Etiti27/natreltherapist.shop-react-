@@ -1,25 +1,29 @@
-import React from 'react'
-import UseFetch from './UseFetch'
-import loader from '../images/loader-waiting.gif'
+import React from 'react';
+import UseFetch from './UseFetch';
+import loader from '../images/loader-waiting.gif';
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import image1 from '../images/HairElixir3.png';
-import image2 from '../images/dailytoxin.png'
+import image2 from '../images/dailytoxin.png';
 
 
 
 
 function UseproductFect() {
+// console.log(checker);
+
+  const history = useHistory();
   const url="http://localhost:3000/data"
   const {isPending:isLoading, error, products}=UseFetch(url);
+  console.log(products);
   const images=[
     image1,
     image2
   ]
 
-  console.log(images[1]);
+  // console.log(images[1]);
 
   const handleCart=(e)=>{
     e.preventDefault();
@@ -27,13 +31,16 @@ function UseproductFect() {
       name:e.target.name.value,
       id:e.target.id.value,
       salePrice:e.target.salePrice.value,
-      quantity:e.target.quantity.value
+      quantity:e.target.quantity.value,
+      image:e.target.image.value
     };
-console.log(allFeactures);
+
 
     axios.post('http://localhost:3000/addtocart', allFeactures)
     .then((res)=>{
-      console.log(res.status);
+      if(res.status===200){
+        history.push("/cart")
+      }
     })
   }
 
@@ -47,14 +54,15 @@ console.log(allFeactures);
 
    <div className="frontal"> <main style={{color:'white'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>
     <section className="f-container">
+    <div >{isLoading && <p className='loadingImage'> <img className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div> 
+      <div>{error && <p>{error}</p>}</div>
       {products && products.map((product, i)=>{    
         
   return ( 
   <div key={product._id}>
     
     
-      <div>{isLoading && <p> <img src={loader} alt="Loadingimage"/> </p>} </div> 
-      <div>{error && <p>{error}</p>}</div>
+      
       <div className="layout_padding">
         <div className="container">
           
@@ -79,7 +87,7 @@ console.log(allFeactures);
                                 <input type="hidden"  name="price" value={product.price} /> 
                                 }
                                 <input type="hidden" name="quantity" value={product.quantity} />
-                                <input type='hidden'name='image' value={images[i]}  />
+                                <input type='hidden' name="image" value={images[i]}  />
                                 
                                 <input type="hidden" name="id"  value={product._id}/>
                               

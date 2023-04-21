@@ -24,6 +24,7 @@ import Forms from './component/ineffectiveComponents/Formik';
 import Payment from "./component/ineffectiveComponents/Payment"
 import StripeSuccess from './component/StripeSuccess';
 import Test from './component/Test';
+import FoundSearch from './component/FoundSearch';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -63,6 +64,7 @@ function App() {
       <Route exact path='/aboutus'><AboutUs /> </Route>
        <Route exact path='/cart' > <Cart /></Route>
       <Route exact path='/stripe-success' > <StripeSuccess /></Route>
+      <Route exact path='/searchfound' > <FoundSearch /></Route>
       
       
       </Switch>

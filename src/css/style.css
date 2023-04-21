@@ -1069,7 +1069,6 @@ opacity: 0.5;
     }
     
     .number-input button {
-    -webkit-appearance: none;
     background-color: transparent;
     border: none;
     align-items: center;
@@ -1255,4 +1254,31 @@ opacity: 0.5;
 .logo{
     height:40%;
     width:40%
+}
+
+.flex-container {
+    display: flex;
+    /* justify-content: space-between; */
+    
+  }
+  
+  /* Responsive layout - makes a one column layout instead of a two-column layout */
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+
+  .big-item { flex: 0 0 50%; } /* flex-grow, flex-shrink, flex-basis */
+
+.small-item { flex: 0 0 50%; }
+td{
+    /* padding:10px */
+    margin-left: 10%;
+}
+
+.loadingImage > img{
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }

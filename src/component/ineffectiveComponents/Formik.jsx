@@ -8,18 +8,27 @@ import { useHistory} from "react-router-dom"
 
 function Forms({cartItems}) {
     const history= useHistory()
+    console.log(cartItems && cartItems);
+    const firstProduct= cartItems && cartItems[0]
+    const secondProduct= cartItems && cartItems[1]
     
-
-
+   
+    
+    
+const cartInf=cartItems && cartItems.map((cartItem)=>{
+    return cartItem
+})
+console.log(cartInf);
     const submit= (data)=>{
-        console.log(data);
-        console.log(cartItems);
-        const allData={...data, 
-            ...cartItems}
-       
+        // console.log(data);
+        console.log(cartInf.map((cart)=>{
+            return cart
+        }));
+        const allData=[data, cartInf]
+            console.log(allData)
 
     const url=`http://localhost:3000/create-checkout-session`
-    axios.post(url, [allData])
+    axios.post(url, allData)
     .then((res)=>{
       console.log(res);
       if(res.status===200){
@@ -164,7 +173,7 @@ const validationSchema=Yup.object().shape({
     </div>
     <div className="row">
     <div className="col-md-6 mb-3">
-            <label>postal (ZIP) Code :</label>
+            <label>Postal (ZIP) Code :</label>
             <ErrorMessage name="postalCode" component="aside"/>
             <Field 
                

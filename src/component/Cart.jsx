@@ -11,12 +11,15 @@ import axios from "axios";
 import hairElixir from "../images/hairelixir.png"
 import { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import pointingDown from "../images/pointingDown.gif"
+import pointingDown from "../images/pointingDown.gif";
+// import image1 from '../images/HairElixir3.png';
+// import image2 from '../images/dailytoxin.png';
 
 
 function Cart() {
   const url="http://localhost:3000/cart"
   const {products, error, isLoading}= UseFetch(url)
+  console.log(products);
  
 const history= useHistory()
 
@@ -24,6 +27,7 @@ const history= useHistory()
 
 
   const [total, setTotal]= useState()
+  
   
     const [isDecrease, setDecrease]=useState(false)
     const [isIncrease, setIncrease]=useState(false)
@@ -44,14 +48,14 @@ const history= useHistory()
   
    
     const getTotal="http://localhost:3000/total"
-    const postMinus="http://localhost:3000/minus"
-    const postPlus="http://localhost:3000/plus"
+    
 
     
 
 
+const subtotal=()=>{
 
-    
+}
 
     
     const handleCartSub =(e)=>{
@@ -64,9 +68,9 @@ const history= useHistory()
       })
       .then((res)=>{
         if(res.status===200){
-          history.push('/cart')
-          console.log(`i am checjed`);
           history.go('/cart')
+          console.log(`i am checjed`);
+          
         }
       })
       
@@ -107,52 +111,72 @@ const history= useHistory()
     
    
   
-        <div><div>{isLoading && <p> <img src={loader} alt="Loadingimage"/> </p>} </div>
+        <div>{isLoading && <p > <img  src={loader} alt="Loadingimage" style={{width:"100px"}}/> </p>} </div>
           
-          <div>{error && <p>{error}</p>}</div></div>
+          <div>{error && <p>{error}</p>}</div>
          
 
-  
+<div className='flex-container'>
+    
 
-    <section className="h-100 " style={{backgroundColor: "white"}}>
+    <section className="h-100 big-item " style={{backgroundColor: "white"}}>
+
   <div className="container h-100 py-5">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col">
         <div className="card shopping-cart" style={{borderRadius: "15px"}}>
           <div className="card-body text-black">
-         
           
-          {products && products.length >=1 ? products.map((product)=>{
-            
+         
+          {products && products.length === 0 ?
+            <div><h1 className="mb-5 pt-2 text-center fw-bold text-uppercase transitional" style={{textAlign:"center", color:'red'}} >Oop! The Cart is empty</h1>
+                   <h2 style={{textAlign:"center", color:'red'}}>click below to add products to cart</h2>
+                   <br/>
+                   <p style={{textAlign:"center"}}><img src={pointingDown} alt="pointing down"/></p>
+                   
+                  <h1 style={{ textAlign:"center"}}> <Link to="/"  style={{color:"white", borderRadius:"50px" }} className="empty-cart">Go To Cart</Link></h1>
+                   
+                   
 
-return(<div>
+                   </div> :
+          
+          products && products.map((product)=>{
+           
+            <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">CART</h3>
+
+    return(<div>
 
 
-            <div className="row">
+            <div className="row ">
               <div className="col-lg-6 px-5 py-4">
-
-                <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
+           
+                
 
                 <div className="d-flex align-items-center mb-5">
-                  <div className="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                      className="img-fluid" style={{width: "150px"}} alt="Generic placeholder"/>
-                  </div>
-                  <div className="flex-grow-1 ms-3">
+            <table style={{width: "100%",}}>
+            <tr>
+              <th >name</th>
+              <th><input type="hidden" /></th>
+              <th>Sale Price</th>
+              <th><input type="hidden" /></th>
+
+           
+              <th style={{marginLeft:'20px'}}>Subtotal</th>
+              <th><input type="hidden" /></th>
+              
+              
+            </tr>
+            <tr>
+              <td><div className="flex-shrink-0"><img src={product.image} className="img-fluid" style={{width: "60px", borderRadius:"50%"}} alt="product placeholder"/></div></td>
+              <td><div >{product.name}</div></td>
+              <td><p className="fw-bold mb-0 me-5 pe-3">€{product.salePrice}.00</p></td>
+              
+              <td> <div className="flex-grow-1 ms-3">
                     <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <form onSubmit={deleteCart}>
-                    <input type="hidden" name="id" value={product.id} />
-                    <input type="hidden" name="name" value={product.names} />
                     
-                      <h5 className="text-primary" >{product.names}       <span style={{paddingLeft:"20%"}}>
-                      {console.log(product)}
-                      <button ><DeleteIcon color="primary"/></button>
                       
-                      </span></h5> 
-                      </form>
-                      <p>{product.desc}</p>
                       <div className="d-flex align-items-center">
-                      <p className="fw-bold mb-0 me-5 pe-3">€ {product.salePrice}</p>
+                      
                       <div className="def-number-input number-input safari_only">
                       <form onSubmit={handleCartSub}>
                        
@@ -164,40 +188,44 @@ return(<div>
                        </form>
                       </div>
                     </div>
-                    <hr className="mb-4" style={{height: "2px", backgroundColor: "#1266f1", opacity: "1"}}/>
+
                    
-                    {console.log(total)}
-                    <h1 style={{paddingLeft:"10%"}}> Total:    <span style={{paddingLeft:"20%"}} > €{total}</span></h1>
                    
-                  </div>
+                  </div></td>
+              <td><div>{product.salePrice * product.quantity}</div> </td>
+              <td><form onSubmit={deleteCart}>
+                    <input type="hidden" name="id" value={product.id} />
+                    <input type="hidden" name="name" value={product.names} />
+                    
+                      <h5 className="text-primary" >{product.names}       <span style={{paddingLeft:"20%"}}>
+                     
+                      <button ><DeleteIcon color="primary"/></button>
+                      
+                      </span></h5> 
+                      </form></td>
+            </tr>
+              
+            </table>
+                  
+                  
+                 
                 </div>
               </div>
-              <div className="col-lg-6 px-5 py-4">
-              <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">Shipping Address</h3>
               
-                <Form 
-                  cartItems={product}
-                />
-
-              </div>
             </div>
             </div>)
 
                                       
                    }) 
-                   : <div><h1 className="mb-5 pt-2 text-center fw-bold text-uppercase transitional" style={{textAlign:"center", color:'red'}} >Oop! The Cart is empty</h1>
-                   <h2 style={{textAlign:"center", color:'red'}}>click below to add products to cart</h2>
-                   <br/>
-                   <p style={{textAlign:"center"}}><img src={pointingDown} alt="pointing down"/></p>
                    
-                  <h1 style={{ textAlign:"center"}}> <Link to="/"  style={{color:"white", borderRadius:"50px" }} className="empty-cart">Go To Cart</Link></h1>
-                   
-                   
-
-                   </div>
                    }
-
-
+                
+                    
+                   {products && products.length !== 0 ? <div> <hr className="mb-4" style={{height: "2px", backgroundColor: "#1266f1", opacity: "1"}}/>
+                   
+                   
+                    <h1 style={{paddingLeft:"10%"}}> Total:    <span style={{paddingLeft:"20%"}} > €{total}</span></h1>
+                 </div>:null }
           </div>
         </div>
       </div>
@@ -206,7 +234,43 @@ return(<div>
 </section>
 
 
+{total !==0 ?
+ <div className="col-lg px-5 py-4 small-item" >
+              <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">Shipping Address</h3>
+              
+
+             
+                <Form 
+                
+                  cartItems={products}
+               
+                />
+              {console.log(products)}
+              
+                
+              </div>:null}
+  
+
+
+
+
+</div>
+<table style={{width: '100%'}}>
+<tr>
+  <th>Company Name</th>
+  <th>Location</th>
+  <th>Year</th>
+</tr>
+<tr>
+  <td>ECS</td>
+  <td>Nigeria</td>
+  <td>2018</td>
+</tr>
+</table>
+
   </div>
+
+
  
   
   )

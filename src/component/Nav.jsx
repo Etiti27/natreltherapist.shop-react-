@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useHistory} from "react-router-dom";
 import userIcon from "../images/user-icon.png";
 import logo from "../images/logo1.jpeg"
@@ -7,12 +7,38 @@ import bagIcon  from "../images/bag-icon.png";
 // import search from "../images/search-icon.png"
 import NatrelLogo from "../images/Whitengreen.png"
 import "../css/style.css"
+import axios from 'axios'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import IconButton from '@mui/material/IconButton';
 import Search from '@mui/icons-material/Search';
 
 
 function Nav () {
+  const history= useHistory()
+  const [search, setSearch]=useState("");
+  const handleSearch=(e)=>{
+    
+    setSearch(e.target.value)
+    console.log(search);
+
+  }
+
+  const handleSearchSubmit=(e)=>{
+    e.preventDefault();
+    console.log(search);
+    axios.post('http://localhost:3000/searchproduct', {search})
+    .then((res)=>{
+      if(res.status===200){
+        setSearch("")
+        history.go('/searchfound')
+      }
+    })
+    .catch((err)=>{
+      throw err
+    })
+
+  }
   return (
    <div> 
    <nav className="navbar bg-body-tertiary  home-route">
@@ -23,7 +49,7 @@ function Nav () {
     </button>
     <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div className="offcanvas-header">
-        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <h5 className="offcanvas-title " id="offcanvasNavbarLabel"><img style={{width:'2.5rem'}} src={logo} alt='logo'/>  NA'TREL THERAPY SHOP</h5>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div className="offcanvas-body">
@@ -31,17 +57,21 @@ function Nav () {
           <li className="nav-item">
             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
+            <Link className="nav-link" to="/cart"> <AddShoppingCartIcon /> View Cart </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to="/about">About Us</Link>
           </li>
-          <li class="nav-item">
-            <Link className="nav-link" to="/Contact Us">Contact Us</Link>
+          <li className="nav-item">
+            <Link className="nav-link" to="/contact">Contact Us</Link>
           </li>
         
         </ul>
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <div style={{color:'red'}}>searching for : {search}</div>
+        <form onSubmit={handleSearchSubmit} className="d-flex mt-3" role="search" >
+          <input className="form-control me-2" name="search" onChange={handleSearch} value={search} type="search" placeholder="Search for Product" aria-label="Search"/>
+          <button className="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
