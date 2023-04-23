@@ -64,6 +64,7 @@ function App() {
       <Route exact path='/aboutus'><AboutUs /> </Route>
        <Route exact path='/cart' > <Cart /></Route>
       <Route exact path='/stripe-success' > <StripeSuccess /></Route>
+      <Route exact path='/cancel' > <UseproductFect /></Route>
       <Route exact path='/searchfound' > <FoundSearch /></Route>
       
       

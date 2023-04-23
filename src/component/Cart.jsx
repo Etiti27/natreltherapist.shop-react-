@@ -255,18 +255,7 @@ const subtotal=()=>{
 
 
 </div>
-<table style={{width: '100%'}}>
-<tr>
-  <th>Company Name</th>
-  <th>Location</th>
-  <th>Year</th>
-</tr>
-<tr>
-  <td>ECS</td>
-  <td>Nigeria</td>
-  <td>2018</td>
-</tr>
-</table>
+
 
   </div>
 

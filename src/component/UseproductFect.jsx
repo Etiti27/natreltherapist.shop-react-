@@ -12,8 +12,15 @@ import image2 from '../images/dailytoxin.png';
 
 
 function UseproductFect() {
+  let text=`Product added to Cart, Do you want to view the cart?`
 // console.log(checker);
-
+const confirmation=()=>{
+  if(window.confirm(text)){
+    history.push('/cart');
+  }else{
+    history.push('/');
+  }
+}
   const history = useHistory();
   const url="http://localhost:3000/data"
   const {isPending:isLoading, error, products}=UseFetch(url);
@@ -39,7 +46,8 @@ function UseproductFect() {
     axios.post('http://localhost:3000/addtocart', allFeactures)
     .then((res)=>{
       if(res.status===200){
-        history.push("/cart")
+        confirmation()
+        // history.push("/cart")
       }
     })
   }
