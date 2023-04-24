@@ -14,6 +14,7 @@ import { useHistory, Link } from 'react-router-dom';
 import pointingDown from "../images/pointingDown.gif";
 // import image1 from '../images/HairElixir3.png';
 // import image2 from '../images/dailytoxin.png';
+import gobackarrow from "../images/gobackarrow.gif";
 
 
 function Cart() {
@@ -139,10 +140,11 @@ const subtotal=()=>{
                    
 
                    </div> :
-          
-          products && products.map((product)=>{
+          <div>
+          <h3 style={{marginTop:"0%"}} className="mb-5 pt-2 text-center fw-bold text-uppercase">CART</h3>
+          {products && products.map((product)=>{
            
-            <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">CART</h3>
+           
 
     return(<div>
 
@@ -153,13 +155,12 @@ const subtotal=()=>{
                 
 
                 <div className="d-flex align-items-center mb-5">
-            <table style={{width: "100%",}}>
+            <table style={{width: "100%"}}>
             <tr>
               <th >name</th>
               <th><input type="hidden" /></th>
               <th>Sale Price</th>
               <th><input type="hidden" /></th>
-
            
               <th style={{marginLeft:'20px'}}>Subtotal</th>
               <th><input type="hidden" /></th>
@@ -216,7 +217,8 @@ const subtotal=()=>{
             </div>)
 
                                       
-                   }) 
+                   }) }
+                   </div>
                    
                    }
                 
@@ -252,12 +254,15 @@ const subtotal=()=>{
   
 
 
+              </div>
+
+<button><img className="gobackarrow" src={gobackarrow} alt="go back arrow" onClick={()=>{history.go(-1)}}/> </button>
 
 
 </div>
 
 
-  </div>
+  
 
 
  

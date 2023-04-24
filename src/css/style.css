@@ -221,6 +221,7 @@ button {
 
 .layout_padding {
     padding-top: 0rem;
+    margin-bottom: 5%;
     
     
     /* background-color: #DFD6B9; */
@@ -433,6 +434,7 @@ button {
     padding: 20px 0px 0px 0px;
     margin-top: 30px;
     background-color: #DFD6B9;
+    margin-bottom: -30px;
 }
 
 .bursh_text {
@@ -1304,13 +1306,13 @@ td{
       font-size:20px;
       margin: 0;
     }
-  i {
+  .checkmark {
     color: #9ABC66;
     font-size: 100px;
     line-height: 200px;
     margin-left:-15px;
   }
-  .card {
+  .carded {
     background: white;
     padding: 60px;
     border-radius: 4px;

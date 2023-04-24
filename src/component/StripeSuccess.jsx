@@ -14,7 +14,7 @@ function StripeSuccess() {
     
     success !==true?
     <div className="body-success">
-    <div className="card">
+    <div className="carded">
       <div style={{
         borderRadius:"200px", 
         height:"200px", 

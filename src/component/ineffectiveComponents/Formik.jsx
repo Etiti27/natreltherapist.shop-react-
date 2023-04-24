@@ -76,7 +76,7 @@ const validationSchema=Yup.object().shape({
     
     country:Yup.string()
     .min(3, "too small")
-    .max(15, "too much")
+    .max(30, "too much")
     .required("Choose Your Country"),
 
     city:Yup.string()
@@ -145,16 +145,45 @@ const validationSchema=Yup.object().shape({
                 
             />
             </div>
+             
          </div>
          <div className="row">
          <div className="col-md-6 mb-3">
              <label>Country:</label>
              <ErrorMessage name="country" component="aside"/>
              <Field as="select" name="country"   placeholder="Country" id="country" className="form-control">
-             <option disabled value>choose your country</option>
-             <option value="USA">USA</option>
+             <option disabled value>select your country</option>
+             <option value="Austria">Austria</option>
              <option value="Belgium">Belgium</option>
+             <option value="Bulgaria">Bulgaria</option>
+             <option value="Croatia">Croatia</option>
+             <option value="Republic of Cyprus">Republic of Cyprus</option>
+             <option value="Czech Republic">Czech Republic</option>
+             <option value="Denmark">Denmark</option>
+             <option value="Estonia">Estonia</option>
+             <option value="Finland">Finland</option>
+             <option value="France">France</option>
+             <option value="Germany">Germany</option>
+             <option value="Greece">Greece</option>
+             <option value="Hungary">Hungary</option>
+             <option value="Ireland">Ireland</option>
+             <option value="Italy">Italy</option>
+             <option value="Latvia">Latvia</option>
+             <option value="Lithuania">Lithuania</option>
+             <option value="Luxembourg">Luxembourg</option>
+             <option value="Malta">Malta</option>
              <option value="Netherlands">Netherlands</option>
+             <option value="Poland">Poland</option>
+             <option value="Portugal">Portugal</option>
+             <option value="Romania">Romania</option>
+             <option value="Slovakia">Slovakia</option>
+             <option value="Slovenia">Slovenia</option>
+             <option value="Spain">Spain</option>
+             <option value="Sweden">Sweden</option>
+             <option value="United Kingdom">United Kingdom</option>
+             <option value="United States">United States</option>
+             
+
            </Field>
            </div>
 

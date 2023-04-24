@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link, useHistory} from "react-router-dom";
 import userIcon from "../images/user-icon.png";
 import logo from "../images/logo1.jpeg"
+import logo2 from "../images/logo2.png"
 import toggle from "../images/toggle-icon.png";
 import bagIcon  from "../images/bag-icon.png";
 // import search from "../images/search-icon.png"
