@@ -1,7 +1,8 @@
 {
-  "name": "newone",
+  "name": "natrelClient",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://natreltherapy.shop/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -53,6 +54,6 @@
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.6"
-  },
- "proxy":"http://localhost:3000"
+  }
+ 
 }

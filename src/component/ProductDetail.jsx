@@ -9,6 +9,7 @@ import gobackarrow from "../images/gobackarrow.gif";
 import axios from "axios";
 import image1 from '../images/HairElixir3.png';
 import image2 from '../images/dailytoxin.png';
+import { primaryURL, age } from './Config';
 
 
 
@@ -39,7 +40,7 @@ function ProductDetail() {
         quantity:e.target.quantity.value,
         image:e.target.image.value
       };
-      axios.post('http://localhost:3000/addtocart', allFeactures)
+      axios.post(`${primaryURL}/addtocart`, allFeactures)
       .then((res)=>{
         if(res.status===200){
           confirmation()
@@ -50,7 +51,7 @@ function ProductDetail() {
 
    const history = useHistory()
    const {name}= useParams()
-    const url=`http://localhost:3000/data/${name}`
+    const url=`${primaryURL}/data/${name}`
     const {isPending:isLoading, error, products}=UseFetch(url);
    
    

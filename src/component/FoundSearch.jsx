@@ -3,16 +3,18 @@ import React from 'react'
 import UseFetch from './UseFetch'
 import loading from "../images/loader-waiting.gif";
 import hairElixir from "../images/hairelixir.png";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import gobackarrow from "../images/gobackarrow.gif"
+import { primaryURL, age } from './Config';
 
 
 function ProductDetail() {
    const history = useHistory()
-   const {name}= useParams()
    
-    const url=`http://localhost:3000/searchedItem`
+   
+   
+    const url=`${primaryURL}/searchedItem`
     let {isPending:isLoading, error, products}=UseFetch(url);
    console.log(products && products);
     
@@ -40,7 +42,7 @@ function ProductDetail() {
                             <h1 className="title" >INGREDIENTS</h1>
                             <p className='lorem_text'>{products && products.ingredient}</p>
                             <form >
-                            <button >check</button>
+                           
                             </form>
                             </div>
                             }      
@@ -57,10 +59,11 @@ function ProductDetail() {
               
           
                  
-    <img className="gobackarrow" src={gobackarrow} alt="go back arrow" onClick={()=>{history.go(-1)}}/>
+   
     
      
               </div>
+              <img className="gobackarrow" src={gobackarrow} alt="go back arrow" onClick={()=>{history.go(-1)}}/>
            </div>
 
           

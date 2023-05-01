@@ -7,11 +7,14 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import image1 from '../images/HairElixir3.png';
 import image2 from '../images/dailytoxin.png';
+import { primaryURL, age } from './Config';
 
 
 
 
 function UseproductFect() {
+  console.log(`${primaryURL}/data`);
+  console.log(age);
   let text=`Product added to Cart, Do you want to view the cart?`
 // console.log(checker);
 const confirmation=()=>{
@@ -22,7 +25,7 @@ const confirmation=()=>{
   }
 }
   const history = useHistory();
-  const url="http://localhost:3000/data"
+  const url=`${primaryURL}/data`
   const {isPending:isLoading, error, products}=UseFetch(url);
   console.log(products);
   const images=[
@@ -43,7 +46,7 @@ const confirmation=()=>{
     };
 
 
-    axios.post('http://localhost:3000/addtocart', allFeactures)
+    axios.post(`${primaryURL}/addtocart`, allFeactures)
     .then((res)=>{
       if(res.status===200){
         confirmation()
@@ -57,13 +60,15 @@ const confirmation=()=>{
   
 
   return (
+
     <div className="home-route">
-    
+    <div >{isLoading && <p className='loadingImage'> <img style={{width:'100%', height:'100%'}} className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div>
+    <div>{error && <p>{error}</p>}</div> 
 
    <div className="frontal"> <main style={{color:'white'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>
     <section className="f-container">
-    <div >{isLoading && <p className='loadingImage'> <img className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div> 
-      <div>{error && <p>{error}</p>}</div>
+    
+      
       {products && products.map((product, i)=>{    
         
   return ( 

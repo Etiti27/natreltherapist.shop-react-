@@ -3,6 +3,7 @@ import {Formik, Form, Field,ErrorMessage} from "formik"
 import * as Yup from "yup"
 import axios from 'axios';
 import { useHistory} from "react-router-dom"
+import { primaryURL, age } from '../Config';
 
 
 
@@ -27,7 +28,7 @@ console.log(cartInf);
         const allData=[data, cartInf]
             console.log(allData)
 
-    const url=`http://localhost:3000/create-checkout-session`
+    const url=`${primaryURL}/create-checkout-session`
     axios.post(url, allData)
     .then((res)=>{
       console.log(res);

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, useHistory} from "react-router-dom";
+import { Link, useHistory, useParams} from "react-router-dom";
 import userIcon from "../images/user-icon.png";
 import logo from "../images/logo1.jpeg"
 import logo2 from "../images/logo2.png"
@@ -13,10 +13,12 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import IconButton from '@mui/material/IconButton';
 import Search from '@mui/icons-material/Search';
+import { primaryURL, age } from './Config';
 
 
 function Nav () {
   const history= useHistory()
+  let {name}= useParams()
   const [search, setSearch]=useState("");
   const handleSearch=(e)=>{
     
@@ -28,11 +30,12 @@ function Nav () {
   const handleSearchSubmit=(e)=>{
     e.preventDefault();
     console.log(search);
-    axios.post('http://localhost:3000/searchproduct', {search})
+
+    axios.post(`${primaryURL}/searchproduct`, {search})
     .then((res)=>{
       if(res.status===200){
         setSearch("")
-        history.go('/searchfound')
+        history.push(`/searchfound/found`)
       }
     })
     .catch((err)=>{

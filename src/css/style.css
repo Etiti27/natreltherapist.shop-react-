@@ -292,7 +292,7 @@ button {
 
 @media screen and (max-width: 450px) {
     .sidenav {
-        padding-top: 15px;
+        padding-top: 0.9375rem;
         background-color: rgb(0, 0, 0, 0.9);
     }
     .sidenav a {
@@ -1053,11 +1053,7 @@ opacity: 0.5;
     background-color: #008037;
 }
 
-@media (min-width: 1025px) {
-    .h-custom {
-    height: 100vh !important;
-    }
-    }
+
     
     .number-input input[type="number"] {
     -webkit-appearance: textfield;
@@ -1100,12 +1096,12 @@ opacity: 0.5;
     
     .number-input.number-input {
     border: 1px solid #ced4da;
-    width: 10rem;
+    width: 5rem;
     border-radius: .25rem;
     }
     
     .number-input.number-input button {
-    width: 2.6rem;
+    width: .6rem;
     height: .7rem;
     }
     
@@ -1319,4 +1315,7 @@ td{
     box-shadow: 0 2px 3px #C8D0D8;
     display: inline-block;
     margin: 0 auto;
+  }
+  table{
+    font-size: ;
   }

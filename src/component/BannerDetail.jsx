@@ -5,6 +5,7 @@ import UseFetch from './UseFetch'
 import loader from "../images/loader-waiting.gif"
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useHistory } from 'react-router-dom';
+import { primaryURL, age } from './Config';
 
 
 
@@ -12,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 function BannerDetail() {
   const history= useHistory()
  
-        const url='http://localhost:3000/ourstory'
+        const url=`${primaryURL}/ourstory`
   const {isPending:isLoading, error, products:stories}=UseFetch(url);
   console.log(stories);
   return (

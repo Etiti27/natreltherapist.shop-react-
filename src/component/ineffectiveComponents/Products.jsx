@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import FormHelperText from '@mui/material/FormHelperText'
-
 import axios from 'axios';
+import { primaryURL, age } from './Config';
 
 
 
@@ -23,7 +23,7 @@ const url=`/data`
    items&&items.map((item, i)=>{
       console.log(item);
       return <div key={item._id}>
-  {item.productName, item.productDescription}
+  {/* {item.productName, item.productDescription} */}
       </div>
    })
 

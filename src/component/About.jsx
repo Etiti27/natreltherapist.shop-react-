@@ -1,7 +1,8 @@
 import React from 'react'
-import AboutUs from './AboutUs'
+// import AboutUs from './AboutUs'
 import janine from "../images/janine.jpeg"
 import { Link } from "react-router-dom"
+// import {configData} from "./config/config"
 
 function About() {
    
@@ -19,7 +20,7 @@ function About() {
                 </div>
              </div>
              <div class="col-md-6">
-                <div><img src={janine} className="image_3"/></div>
+                <div><img src={janine} className="image_3" alt='janine'/></div>
              </div>
           </div>
        </div>

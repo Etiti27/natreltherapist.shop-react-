@@ -41,6 +41,7 @@ import FoundSearch from './component/FoundSearch';
 
 
 function App() {
+
   
   return (
     <div className="App">
@@ -65,7 +66,7 @@ function App() {
        <Route exact path='/cart' > <Cart /></Route>
       <Route exact path='/stripe-success' > <StripeSuccess /></Route>
       <Route exact path='/cancel' > <UseproductFect /></Route>
-      <Route exact path='/searchfound' > <FoundSearch /></Route>
+      <Route exact path='/searchfound/found' > <FoundSearch /></Route>
       
       
       </Switch>

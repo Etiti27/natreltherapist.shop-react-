@@ -15,10 +15,11 @@ import pointingDown from "../images/pointingDown.gif";
 // import image1 from '../images/HairElixir3.png';
 // import image2 from '../images/dailytoxin.png';
 import gobackarrow from "../images/gobackarrow.gif";
+import { primaryURL, age } from './Config';
 
 
 function Cart() {
-  const url="http://localhost:3000/cart"
+  const url=`${primaryURL}/cart`
   const {products, error, isLoading}= UseFetch(url)
   console.log(products);
  
@@ -48,15 +49,13 @@ const history= useHistory()
   }
   
    
-    const getTotal="http://localhost:3000/total"
+    const getTotal=`${primaryURL}/total`
     
 
     
 
 
-const subtotal=()=>{
 
-}
 
     
     const handleCartSub =(e)=>{
@@ -64,12 +63,13 @@ const subtotal=()=>{
       const id=e.target.id.value
       const quantity=e.target.quantity.value
       console.log(id, quantity, isDecrease, isIncrease);
-      axios.post("http://localhost:3000/posted",{
+      axios.post(`${primaryURL}/posted`,{
         id,quantity,isDecrease,isIncrease
       })
       .then((res)=>{
         if(res.status===200){
           history.go('/cart')
+          
           console.log(`i am checjed`);
           
         }
@@ -93,10 +93,11 @@ const subtotal=()=>{
     const names=e.target.name.value
     console.log(id);
     console.log(names);
-    axios.post("http://localhost:3000/deletecart",{id, names})
+    axios.post(`${primaryURL}/deletecart`,{id, names})
     .then((res)=>{
       if(res.status===200){
-        history.go("/cart");
+        history.go('/cart');
+        
       }
     })
     
@@ -107,12 +108,12 @@ const subtotal=()=>{
 
    
 
-    <div>
+    <div >
 
     
    
   
-        <div>{isLoading && <p > <img  src={loader} alt="Loadingimage" style={{width:"100px"}}/> </p>} </div>
+        <div>{isLoading && <p > <img  src={loader} alt="Loadingimage" style={{width:"100%"}}/> </p>} </div>
           
           <div>{error && <p>{error}</p>}</div>
          
@@ -120,12 +121,12 @@ const subtotal=()=>{
 <div className='flex-container'>
     
 
-    <section className="h-100 big-item " style={{backgroundColor: "white"}}>
+    <section className=" big-item " style={{backgroundColor: "white"}}>
 
-  <div className="container h-100 py-5">
-    <div className="row d-flex justify-content-center align-items-center h-100">
+  <div className="container">
+    <div className="row d-flex justify-content-center align-items-center ">
       <div className="col">
-        <div className="card shopping-cart" style={{borderRadius: "15px"}}>
+        <div className="card shopping-cart" style={{borderRadius: "0.9375rem"}}>
           <div className="card-body text-black">
           
          
@@ -150,19 +151,19 @@ const subtotal=()=>{
 
 
             <div className="row ">
-              <div className="col-lg-6 px-5 py-4">
+              <div className="col">
            
                 
 
-                <div className="d-flex align-items-center mb-5">
-            <table style={{width: "100%"}}>
+                <div className="d-flex align-items-center">
+            <table style={{width:"100%"}}>
             <tr>
               <th >name</th>
               <th><input type="hidden" /></th>
               <th>Sale Price</th>
               <th><input type="hidden" /></th>
            
-              <th style={{marginLeft:'20px'}}>Subtotal</th>
+              <th style={{marginLeft:''}}>Subtotal</th>
               <th><input type="hidden" /></th>
               
               
@@ -172,11 +173,11 @@ const subtotal=()=>{
               <td><div >{product.name}</div></td>
               <td><p className="fw-bold mb-0 me-5 pe-3">€{product.salePrice}.00</p></td>
               
-              <td> <div className="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
+              <td> <div className="">
+                    <a href="#!" class="k"><i class="fas fa-times"></i></a>
                     
                       
-                      <div className="d-flex align-items-center">
+                      <div className="">
                       
                       <div className="def-number-input number-input safari_only">
                       <form onSubmit={handleCartSub}>
@@ -257,25 +258,19 @@ const subtotal=()=>{
               </div>
 
 <button><img className="gobackarrow" src={gobackarrow} alt="go back arrow" onClick={()=>{history.go(-1)}}/> </button>
-
-
+<table style={{width:"100%"}}>
+  <tr>
+    <th>name</th>
+    <th>address</th>
+  </tr>
+  <tr>
+    <td>obinna</td>
+    <td>ovum</td>
+  </tr>
+</table>
 </div>
 
-
-  
-
-
- 
-  
   )
-  
-  
-
-        
-
-         
-   
-  
 }
 
 export default Cart

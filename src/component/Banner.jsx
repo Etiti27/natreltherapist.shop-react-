@@ -4,9 +4,10 @@ import shannaHair from "../images/shanna.jpg";
 import UseFetch from './UseFetch';
 import loader from '../images/loader-waiting.gif'
 import { Link } from 'react-router-dom';
+import { primaryURL, age } from './Config';
 
 function Banner() {
-   const url='http://localhost:3000/ourstory'
+   const url=`${primaryURL}/ourstory`
   const {isPending:isLoading, error, products:stories}=UseFetch(url);
   console.log(stories);
   return (
