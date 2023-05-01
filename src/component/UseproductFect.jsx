@@ -5,8 +5,8 @@ import loader from '../images/loader-waiting.gif';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
-import image1 from '../images/HairElixir3.png';
-import image2 from '../images/dailytoxin.png';
+import image1 from '../images/dailytoxin.png';
+import image2 from '../images/HairElixir3.png';
 import { primaryURL, age } from './Config';
 
 
@@ -65,7 +65,7 @@ const confirmation=()=>{
     <div >{isLoading && <p className='loadingImage'> <img style={{width:'100%', height:'100%'}} className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div>
     <div>{error && <p>{error}</p>}</div> 
 
-   <div className="frontal"> <main style={{color:'white'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>
+   {products && <div className="frontal"> <main style={{color:'#008037', fontSize:'2rem'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>}
     <section className="f-container">
     
       
@@ -106,14 +106,14 @@ const confirmation=()=>{
                               
                               
                                 <button>
-                                <div className="buy_bt btn btn-success" ><AddShoppingCartIcon /> <span className="transitional"> BUY NOW </span></div>  
+                                <div className="buy_bt btn btn-success" ><AddShoppingCartIcon /> BUY NOW </div>  
                                 </button>
                                 
                               </form>
                              
                               <div>
                               <h3  className="price_text1 price"  style={{textDecoration:'line-through'}}> Price:  €{product.price}</h3>
-                              <h3 className="price_text transitional price1" > Sales Price: €{product.salePrice}</h3>
+                              <h3 className="price_text transitiona price1" > Sales Price: €{product.salePrice}</h3>
                               </div>     
                     
                     </div>

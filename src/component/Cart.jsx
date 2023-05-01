@@ -258,16 +258,7 @@ const history= useHistory()
               </div>
 
 <button><img className="gobackarrow" src={gobackarrow} alt="go back arrow" onClick={()=>{history.go(-1)}}/> </button>
-<table style={{width:"100%"}}>
-  <tr>
-    <th>name</th>
-    <th>address</th>
-  </tr>
-  <tr>
-    <td>obinna</td>
-    <td>ovum</td>
-  </tr>
-</table>
+
 </div>
 
   )

@@ -514,7 +514,7 @@ button {
 }
 .price_text1 {
     font-size: 16px;
-    color:red;
+    color:#008037;
     
     /* width: 42%; */
     /* padding-top: 5px; */
@@ -938,8 +938,11 @@ button {
 .copyright_section {
     width: 100%;
     float: left;
-    background-color:#6B6666;
+    background-color: #595959;
     height: auto;
+    border-radius:5px ;
+    margin-top:2%;
+    color:green
 }
 
 .copyright_text {
@@ -1053,7 +1056,11 @@ opacity: 0.5;
     background-color: #008037;
 }
 
-
+@media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
     
     .number-input input[type="number"] {
     -webkit-appearance: textfield;
@@ -1096,7 +1103,7 @@ opacity: 0.5;
     
     .number-input.number-input {
     border: 1px solid #ced4da;
-    width: 5rem;
+    width: rem;
     border-radius: .25rem;
     }
     
@@ -1231,7 +1238,7 @@ opacity: 0.5;
 }
      
 .home-route{
-    background-color: #6B6666;
+    background-color: #ffff;
 }
 
 .gobackarrow {
@@ -1244,10 +1251,15 @@ opacity: 0.5;
 }
 
 .frontal {
-    background-image: url("../images/frontalimage.jpeg");
-    padding-top: 200px ;
-    padding-bottom: 200px;
-    background-size:contain
+    /* background-image: url("../images/frontalimage.jpeg"); */
+    background-image: url("../images/shanna.rm.png");
+    /* background-image: url("../images/frontalimage.rm.png"); */
+    padding-top: 25% ;
+    padding-bottom: 25%;
+    
+    background-repeat: no-repeat;
+  background-size:  100% 100%;
+
 
 }
 .logo{
@@ -1316,6 +1328,4 @@ td{
     display: inline-block;
     margin: 0 auto;
   }
-  table{
-    font-size: ;
-  }
+  
