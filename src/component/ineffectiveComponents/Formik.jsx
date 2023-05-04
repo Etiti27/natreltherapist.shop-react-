@@ -27,9 +27,9 @@ console.log(cartInf);
         }));
         const allData=[data, cartInf]
             console.log(allData)
-
+const url2= 'http://localhost:3000/create-checkout-session'
     const url=`${primaryURL}/create-checkout-session`
-    axios.post(url, allData)
+    axios.post(url2, allData)
     .then((res)=>{
       console.log(res);
       if(res.status===200){

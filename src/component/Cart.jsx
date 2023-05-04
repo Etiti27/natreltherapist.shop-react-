@@ -171,7 +171,8 @@ const history= useHistory()
             <tr>
               <td><div className="flex-shrink-0"><img src={product.image} className="img-fluid" style={{width: "60px", borderRadius:"50%"}} alt="product placeholder"/></div></td>
               <td><div >{product.name}</div></td>
-              <td><p className="fw-bold mb-0 me-5 pe-3">€{product.salePrice}.00</p></td>
+              
+              <td><p className="fw-bold mb-0 me-5 pe-3">  €{product.salePrice}</p></td>
               
               <td> <div className="">
                     <a href="#!" class="k"><i class="fas fa-times"></i></a>

@@ -25,6 +25,11 @@ import Payment from "./component/ineffectiveComponents/Payment"
 import StripeSuccess from './component/StripeSuccess';
 import Test from './component/Test';
 import FoundSearch from './component/FoundSearch';
+import Contact from './component/Contact';
+import Contactfailed from './component/Contactfailed';
+import Contactsuccess from './component/Contactsuccess';
+import { FastField } from 'formik';
+import Failed from './component/Failed';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -62,12 +67,15 @@ function App() {
       {/* <Footer /> */}
       <Route exact path="/bannerdetails"> <BannerDetail /></Route>
       <Route exact path='/productdetails/:name'><ProductDetail /></Route>
-      <Route exact path='/aboutus'><AboutUs /> </Route>
+      <Route exact path='/about'><AboutUs /> </Route>
        <Route exact path='/cart' > <Cart /></Route>
       <Route exact path='/stripe-success' > <StripeSuccess /></Route>
       <Route exact path='/cancel' > <UseproductFect /></Route>
       <Route exact path='/searchfound/found' > <FoundSearch /></Route>
-      
+      <Route exact path='/contact' ><Contact /></Route>
+      <Route exact path='/fail' ><Contactfailed /></Route>
+      <Route exact path='/contactsubmitted'><Contactsuccess /></Route>
+      <Route exact path='/failed'><Failed /></Route>
       
       </Switch>
       <Copyright />

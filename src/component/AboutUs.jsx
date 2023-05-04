@@ -21,22 +21,22 @@ As a Natural Hair Therapist, I do not recommend or promote a one-sided, product-
 
 As a Natural Hair Therapist, I use every pillar in the holistic hair care philosophy “NISH” to help you:
 </p>
-
+<p>
   <ol>
     <li>NUTRITION</li>
     <li>INGREDIENTS</li>
     <li>SCALP CARE </li>
     <li>HAIR MAINTENANCE.</li>
   </ol>
-
+</p>
 <h2 className="title">What can I do for you as a Natural Hair Therapist?</h2>
 <p>Hair- and scalp issues such as hair loss, thinning hair, breaking hair, sensitive scalp, are mostly issues that my clients seek help for when they contact me. Is this something that you struggle with or seek help for? feel free to book a 30 consultation with me.
 
 During this consultation, we will be able to get a high-level view of your issue.  Based on the information you share, you will receive a brief report and a recommendation of how I would be able to help you. Ready to attack your issue? </p>
 
 
+<div style={{alignContent:"center", textAlign:"center"}}><button className="btn btn-success" disabled ><Link to="#" className=''> BOOK APPOINTMENT TODAY</Link></button></div> 
 
-<Button href="#" className='title'>BOOK APPOINTMENT TODAY</Button>
 
 <h2 className="title">What is the difference between a Natural Hair Therapist and a hairdresser?</h2>
 <p>Whereas a hairdresser is a beauty professional who primarily cuts and styles the hair in a salon or spa using several techniques, products, and equipment ON the hair, a natural hair therapist is trained to look at the <em className='title'>whole picture / uses a holistic approach </em>when it comes to hair care.

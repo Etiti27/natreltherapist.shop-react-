@@ -5,16 +5,16 @@ import loader from '../images/loader-waiting.gif';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
-import image1 from '../images/dailytoxin.png';
-import image2 from '../images/HairElixir3.png';
+import image1 from '../images/dailytoxelixir3.png';
+import image2 from '../images/hairoil.png';
 import { primaryURL, age } from './Config';
 
 
 
 
 function UseproductFect() {
-  console.log(`${primaryURL}/data`);
-  console.log(age);
+  // console.log(`${primaryURL}/data`);
+  // console.log(age);
   let text=`Product added to Cart, Do you want to view the cart?`
 // console.log(checker);
 const confirmation=()=>{
@@ -65,7 +65,7 @@ const confirmation=()=>{
     <div >{isLoading && <p className='loadingImage'> <img style={{width:'100%', height:'100%'}} className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div>
     <div>{error && <p>{error}</p>}</div> 
 
-   {products && <div className="frontal"> <main style={{color:'#008037', fontSize:'2rem'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>}
+   {products && <div className="frontal"> <main style={{color:'#008037'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>}
     <section className="f-container">
     
       
@@ -89,7 +89,8 @@ const confirmation=()=>{
                         <p className="lorem_text">{product.desc} </p>
                         <p className="lorem_text">{product.moreDesc.substring(0,100)}...</p> 
                         <div className=""><Link to={`/productdetails/${product.name}`} className="btn btn-light read-more">Read More</Link></div>
-                        <img src={images[i]} alt="Hair elixir" className="image_1"/>
+                       <div onClick={handleCart}> <img src={images[i]}  alt="Hair elixir" className="image_1"/></div>
+                        
                             
                               <form onSubmit={handleCart}>
                                 <input type="hidden"   name="name" value={product.name} />
@@ -106,14 +107,14 @@ const confirmation=()=>{
                               
                               
                                 <button>
-                                <div className="buy_bt btn btn-success" ><AddShoppingCartIcon /> BUY NOW </div>  
+                                <div className="buy_bt btn btn-success" ><AddShoppingCartIcon /> Buy Now </div>  
                                 </button>
                                 
                               </form>
                              
                               <div>
-                              <h3  className="price_text1 price"  style={{textDecoration:'line-through'}}> Price:  €{product.price}</h3>
-                              <h3 className="price_text transitiona price1" > Sales Price: €{product.salePrice}</h3>
+                              <h3  className="price_text1" > <span className="price_text sale-price">€{product.salePrice} &nbsp;</span><span className='price' style={{textDecoration:'line-through'}}>€{product.price}</span>  </h3>
+                              
                               </div>     
                     
                     </div>
