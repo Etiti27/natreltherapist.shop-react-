@@ -14,7 +14,7 @@ import pointingDown from "../images/pointingDown.gif";
 
 
 import gobackarrow from "../images/gobackarrow.gif";
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 
 
 function Cart() {

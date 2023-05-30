@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 // import image1 from '../images/dailytoxelixir3.png';
 // import image2 from '../images/hairoil.png';
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 import Carousel from 'react-bootstrap/Carousel';
 // import imagee from '../images/'
 

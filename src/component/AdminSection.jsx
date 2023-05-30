@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import UseFetch from './UseFetch';
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 import axios from 'axios';
 import loader from '../images/loader-waiting.gif';
 import { Link, useHistory } from 'react-router-dom';
@@ -19,7 +19,7 @@ function  AdminSection() {
   const [shipDate, setShipDate] = useState('')
 
     const url = 'http://localhost:3000/admin';
-    const url2=`${primaryURL}/adminsection` ;
+    const url2=`${primaryURL}/admin` ;
     
 // console.log(detail);
     const handleSubmit=(e)=>{
@@ -32,7 +32,7 @@ function  AdminSection() {
         method: 'POST',
         data:{clientId},
         withCredentials:true,
-        url:url
+        url:url2
     }
     ).then((res)=>{
       console.log(res);
@@ -69,7 +69,7 @@ function  AdminSection() {
         setIsLoading(true)
         axios({
           method: 'POST',
-          url: url4,
+          url: url3,
           withCredentials:true,
           data:{shipped,clientId}
         }).then((res)=>{

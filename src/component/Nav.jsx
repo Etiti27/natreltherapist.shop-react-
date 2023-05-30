@@ -13,7 +13,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import IconButton from '@mui/material/IconButton';
 import Search from '@mui/icons-material/Search';
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 
 
 function Nav () {

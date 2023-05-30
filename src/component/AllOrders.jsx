@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { primaryURL } from './Config';
+import { primaryURL } from '../../Config';
 import axios from 'axios';
 import loader from '../images/loader-waiting.gif';
 import goodMarkIcon from '../images/goodmarkicon.png';

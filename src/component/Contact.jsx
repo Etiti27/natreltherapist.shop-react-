@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios'
 

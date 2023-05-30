@@ -9,7 +9,7 @@ import gobackarrow from "../images/gobackarrow.gif";
 import axios from "axios";
 import image1 from '../images/HairElixir3.png';
 import image2 from '../images/dailytoxin.png';
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 
 
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Axios from 'axios'
-import { primaryURL } from './Config';
+import { primaryURL } from '../../Config';
 import { Link, useHistory } from 'react-router-dom';
 
 function Login() {

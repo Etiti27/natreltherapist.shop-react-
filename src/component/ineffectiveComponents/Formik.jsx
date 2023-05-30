@@ -3,7 +3,7 @@ import {Formik, Form, Field,ErrorMessage} from "formik"
 import * as Yup from "yup"
 import axios from 'axios';
 import { useHistory} from "react-router-dom"
-import { primaryURL, age } from '../Config';
+import { primaryURL, age } from '../../../Config';
 
 
 

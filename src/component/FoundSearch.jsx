@@ -6,7 +6,7 @@ import hairElixir from "../images/hairelixir.png";
 import { Link, useHistory} from "react-router-dom";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import gobackarrow from "../images/gobackarrow.gif"
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../../Config';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import axios from 'axios'
 
