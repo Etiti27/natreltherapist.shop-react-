@@ -13,7 +13,11 @@ function UseFetch(url) {
    
    useEffect(()=>{
     
-        axios.get(url)
+        axios({
+            url:url,
+            withCredentials:false,
+            method:'GET',
+        })
     .then((response)=>{
         
         if(response.status !==200){

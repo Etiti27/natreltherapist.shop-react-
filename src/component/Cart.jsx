@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/heading-has-content */
+
 import React from 'react'
 import UseFetch from './UseFetch'
 import loader from '../images/loader-waiting.gif'
@@ -8,12 +7,12 @@ import BillingAddress from './ineffectiveComponents/BillingAddress';
 import StripePayButton from './StripePayButton';
 import  Form  from './ineffectiveComponents/Formik';
 import axios from "axios";
-import hairElixir from "../images/hairelixir.png"
+
 import { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import pointingDown from "../images/pointingDown.gif";
-// import image1 from '../images/HairElixir3.png';
-// import image2 from '../images/dailytoxin.png';
+
+
 import gobackarrow from "../images/gobackarrow.gif";
 import { primaryURL, age } from './Config';
 
@@ -130,7 +129,7 @@ const history= useHistory()
           <div className="card-body text-black">
           
          
-          {products && products.length === 0 ?
+          {products && products.length === 0 || products===null ?
             <div><h1 className="mb-5 pt-2 text-center fw-bold text-uppercase transitional" style={{textAlign:"center", color:'red'}} >Oop! The Cart is empty</h1>
                    <h2 style={{textAlign:"center", color:'red'}}>click below to add products to cart</h2>
                    <br/>
@@ -142,8 +141,9 @@ const history= useHistory()
 
                    </div> :
           <div>
-          <h3 style={{marginTop:"0%"}} className="mb-5 pt-2 text-center fw-bold text-uppercase">CART</h3>
-          {products && products.map((product)=>{
+          <h1 style={{marginTop:"0%"}} className="mb-5 pt-2 text-center fw-bold text-uppercase">CART</h1>
+          {/* {console.log(products)} */}
+          {products && products.length > 0 && products.map((product)=>{
            
            
 
@@ -156,25 +156,25 @@ const history= useHistory()
                 
 
                 <div className="d-flex align-items-center">
-            <table style={{width:"100%"}}>
-            <tr>
-              <th >name</th>
-              <th><input type="hidden" /></th>
-              <th>Sale Price</th>
-              <th><input type="hidden" /></th>
+            <table style={{width:"100%",border:"none"}} className='insideD'>
+            <tr style={{color:'white', backgroundColor:'green'}}>
+              <th style={{border:"none"}}>name</th>
+              <th style={{border:"none"}}><input type="hidden" /></th>
+              <th style={{border:"none"}}>Sale Price</th>
+              <th style={{border:"none"}}><input type="hidden" /></th>
            
-              <th style={{marginLeft:''}}>Subtotal</th>
-              <th><input type="hidden" /></th>
+              <th style={{border:"none"}} >Subtotal</th>
+              <th style={{border:"none"}}><input type="hidden" /></th>
               
               
             </tr>
             <tr>
-              <td><div className="flex-shrink-0"><img src={product.image} className="img-fluid" style={{width: "60px", borderRadius:"50%"}} alt="product placeholder"/></div></td>
-              <td><div >{product.name}</div></td>
+              <td style={{border:"none"}}><img src={require(`../images/${product.image}`)} alt={product.name} className="img-fluid" style={{width: "60px", borderRadius:"50%"}}/></td>
+              <td style={{border:"none"}}><div >{product.name}</div></td>
               
-              <td><p className="fw-bold mb-0 me-5 pe-3">  €{product.salePrice}</p></td>
+              <td style={{border:"none"}}><p className="fw-bold mb-0 me-5 pe-3">  €{product.salePrice}</p></td>
               
-              <td> <div className="">
+              <td style={{border:"none"}}> <div className="">
                     <a href="#!" class="k"><i class="fas fa-times"></i></a>
                     
                       
@@ -184,7 +184,7 @@ const history= useHistory()
                       <form onSubmit={handleCartSub}>
                        
                        <input className="minus" name="decrease" type="submit" value="-" onClick={setMinus}/>
-                        <input className="quantity fw-bold text-black" min="0" name="quantity" value={product.quantity} type='number' />
+                        <input className="quantity fw-bold text-black" min="0" style={{fontSize:"10px"}} name="quantity" value={product.quantity} type='number' />
                         <input name="id" value={product.id} type="hidden"/>
                        
                        <input className="plus" type="submit" name="increase" value="+" onClick={setPlus}/>
@@ -195,8 +195,8 @@ const history= useHistory()
                    
                    
                   </div></td>
-              <td><div>{product.salePrice * product.quantity}</div> </td>
-              <td><form onSubmit={deleteCart}>
+              <td style={{border:"none"}}><div>{product.salePrice * product.quantity}</div> </td>
+              <td style={{border:"none"}}><form onSubmit={deleteCart}>
                     <input type="hidden" name="id" value={product.id} />
                     <input type="hidden" name="name" value={product.names} />
                     
@@ -238,7 +238,7 @@ const history= useHistory()
 </section>
 
 
-{total !==0 ?
+{total !==0  && products !==null?
  <div className="col-lg px-5 py-4 small-item" >
               <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">Shipping Address</h3>
               

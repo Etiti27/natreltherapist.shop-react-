@@ -11,15 +11,16 @@ import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import FormHelperText from '@mui/material/FormHelperText'
 import axios from 'axios';
-import { primaryURL, age } from './Config';
+import { primaryURL, age } from '../Config';
 
 
 
 
 function Products() {
+   const url2=`${primaryURL}/data`
 
 const url=`/data`
-   const {products:items, isPending, error}=useFetch(url)
+   const {products:items, isPending, error}=useFetch(url2)
    items&&items.map((item, i)=>{
       console.log(item);
       return <div key={item._id}>
@@ -57,7 +58,8 @@ const handleCart=(e)=>{
 
    }
 const url="http://localhost:3000/cart"
-axios.post(url,allProducts)
+const url3=`${primaryURL}/cart`;
+axios.post(url3,allProducts)
  .then(function (response) {
    if(response.status===200){
       console.log(response.data);

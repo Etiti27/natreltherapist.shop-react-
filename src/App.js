@@ -30,6 +30,13 @@ import Contactfailed from './component/Contactfailed';
 import Contactsuccess from './component/Contactsuccess';
 import { FastField } from 'formik';
 import Failed from './component/Failed';
+import Register from './component/Register';
+import Login from './component/Login';
+import AdminSection from './component/AdminSection';
+
+import DescriptionAlerts from './component/DescriptionAlerts';
+import AllOrders from './component/AllOrders';
+import NewNav from './component/NewNav';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -76,6 +83,13 @@ function App() {
       <Route exact path='/fail' ><Contactfailed /></Route>
       <Route exact path='/contactsubmitted'><Contactsuccess /></Route>
       <Route exact path='/failed'><Failed /></Route>
+      <Route exact path='/register'> <Register /></Route>
+      <Route exact path='/userfound'><DescriptionAlerts /></Route>
+      <Route exact path='/login' > <Login /></Route>
+      <Route exact path='/adminsection' > <AdminSection /></Route>
+      <Route exact path='/allorders' > <AllOrders /></Route>
+      <Route exact path='/newnav'> <NewNav /> </Route>
+
       
       </Switch>
       <Copyright />
