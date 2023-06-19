@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios'
 
@@ -19,7 +19,7 @@ const emailValidate=(e)=>{
   const sliceData=targetValue.toLowerCase().slice(-10)
   if (sliceData==='@gmail.com'){
     setEmailvalid(false)
-    console.log(`true`);
+    
     
   }else{
 
@@ -29,16 +29,22 @@ const emailValidate=(e)=>{
 }
     const submitContact=(e)=>{
        e.preventDefault()
-        const allinput={
+        const allInput={
             name,email,subject, message
         };
 
 
         
         
-       const url=`${primaryURL}/contact`
-       const url2=`http://localhost:3000/contact`
-     axios.post(url, allinput).then((response)=>{
+       const contactURL=`${primaryURL}/contact`
+
+       axios({method:"POST",
+      withCredentials:true,
+      url:contactURL,
+      data:allInput
+      })
+       
+.then((response)=>{
         // console2.log(res);
         
         if(response.status!==200){
@@ -97,8 +103,8 @@ const emailValidate=(e)=>{
         <div className="input-box message-box">
         <textarea type="text" required placeholder="Write your message" name='message' onChange={(e)=>{setMessage(e.target.value)}} value={message}/>
         </div>
-        <div className="italicEmail"> {!emailvalid && <p className="italicEmail">"@gmail.com" emails is not accepted</p>}</div>
-        <div>{!emailvalid ? <button disabled onClick={submitContact} className="btn btn-success">Send Now</button>: <button  onClick={submitContact} className="btn btn-success">Send Now</button>}</div>
+        {/* <div className="italicEmail"> {!emailvalid && <p className="italicEmail">"@gmail.com" emails is not accepted</p>}</div> */}
+        <div><button  onClick={submitContact} className="btn btn-success">Send Now</button></div>
       </form>
     </div>
     </div>

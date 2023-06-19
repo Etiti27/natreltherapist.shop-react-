@@ -3,30 +3,28 @@ import {Formik, Form, Field,ErrorMessage} from "formik"
 import * as Yup from "yup"
 import axios from 'axios';
 import { useHistory} from "react-router-dom"
-import { primaryURL, age } from '../../../Config';
+import { primaryURL, age } from '../Config';
 
 
 
 function Forms({cartItems}) {
     const history= useHistory()
-    console.log(cartItems && cartItems);
+    console.log(cartItems && cartItems.cart);
     const firstProduct= cartItems && cartItems[0]
     const secondProduct= cartItems && cartItems[1]
     
-   
+  
     
     
-const cartInf=cartItems && cartItems.map((cartItem)=>{
+const cartInf=cartItems !==null && Object.keys(cartItems).length >0 && cartItems.cart.map((cartItem)=>{
     return cartItem
 })
 console.log(cartInf);
     const submit= (data)=>{
         // console.log(data);
-        console.log(cartInf.map((cart)=>{
-            return cart
-        }));
+        
         const allData=[data, cartInf]
-            console.log(allData)
+           
 const url2= 'http://localhost:3000/create-checkout-session'
     const url=`${primaryURL}/create-checkout-session`
     axios.post(url, allData)
@@ -215,7 +213,7 @@ const validationSchema=Yup.object().shape({
             />
             </div>
             </div>
-            <button className="btn proceed-to-payment" type="submit"  >Proceed To Payment</button>
+            <button style={{float:"right"}} className="btn proceed-to-payment" type="submit"  >Proceed To Payment</button>
         
         </Form>
     </Formik>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useHistory, useParams} from "react-router-dom";
 import userIcon from "../images/user-icon.png";
 import logo from "../images/logo1.jpeg"
@@ -10,17 +10,32 @@ import NatrelLogo from "../images/Whitengreen.png"
 import "../css/style.css"
 import axios from 'axios'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import shopcart from '../images/shopping-cart.png'
+import shopbag from '../images/shopping-bag.png'
 
 import IconButton from '@mui/material/IconButton';
 import Search from '@mui/icons-material/Search';
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
+import Forms from './ineffectiveComponents/Formik';
 
 
-function Nav () {
+function Nav ({item}) {
   const history= useHistory()
   let {name}= useParams()
   const [search, setSearch]=useState("");
   const [istrue, setIsTrue]=useState(false)
+  const [carts, setCarts]=useState(0)
+  const cartURL=`${primaryURL}/cart`
+  
+axios({
+  method: "GET",
+  withCredentials:true,
+  url:cartURL
+}).then((res)=>{
+ setCarts(res.data.cartLength);
+})
+
+
   const clickedd=()=>{
     setTimeout(()=>{setIsTrue(true)}, 2000)
   }
@@ -34,10 +49,14 @@ function Nav () {
   const handleSearchSubmit=(e)=>{
     e.preventDefault();
     console.log(search);
-    const url=`${primaryURL}/searchproduct`;
-    const url2='http://localhost:3000/searchproduct'
+    const searchURL=`${primaryURL}/searcheditem`;
 
-    axios.post(url, {search})
+    axios({
+      method: "POST",
+      withCredentials:true,
+      url:searchURL,
+      data:{search}
+    })
     .then((res)=>{
       if(res.status===200){
         setSearch("")
@@ -52,52 +71,9 @@ function Nav () {
   const clicked=(e)=>{console.log(e.target);}
   return (
    <div> 
-   {/* beginn */}
-   {/* <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-trigger="#main_nav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-collapse" id="main_nav">
-    <div class="offcanvas-header mt-3">  
-      <button class="btn btn-outline-danger btn-close float-right"> &times Close </button>
-      <h5 class="py-2 text-white">Main navbar</h5>
-    </div>
-    <ul class="navbar-nav">
-      <li onClick={clicked} class="nav-item active"> <a class="nav-link" href="#">Home </a> </li>
-      <li class="nav-item"><a class="nav-link" href="#"> About </a></li>
-      <li class="nav-item"><a class="nav-link" href="#"> Services </a></li>
-    </ul>
-  </div> 
-</nav>
-   {/* endd */}
-   {/* begin */}
-   {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex my-2 my-lg-0">
-                <input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav> */} 
-   {/* end */}
+
+   
+ 
    <nav className="navbar bg-body-tertiary  home-route">
   <div class="container-fluid">
     <Link className="navbar-brand logo" to="/"><img className='' src={logo} alt="logo" /></Link>
@@ -116,11 +92,13 @@ function Nav () {
             <Link  className="nav-link active" aria-current="page" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/cart"> <AddShoppingCartIcon /> View Cart </Link>
+          
+            <Link className="nav-link" to="/cart"> <img style={{width:"10%", padding:"-20px"}} src={shopcart}/><span style={{fontSize: '15px', color:"black",margin:"2%", textAlign:"justify"}}>{carts}</span> </Link>
           </li>
           <li class="nav-item" data-bs-target="#sidenav-collapse-main" data-bs-
       toggle="collapse">
-            <Link  className="nav-link" to="/about">About Us</Link>
+            <Link  className="nav-link" to="/about">About Us</Link> 
+           
           </li>
           <li class="nav-item" data-bs-target="#sidenav-collapse-main" data-bd- 
       toggle="collapse">
@@ -132,12 +110,13 @@ function Nav () {
         
         </ul>
         </div>
-        <div style={{color:'red'}}>searching for : {search}</div>
+        <div style={{color:'green'}}>searching for : {search}</div>
         <form onSubmit={handleSearchSubmit} className="d-flex mt-3" role="search" >
           <input className="form-control me-2" name="search" onChange={handleSearch} value={search} type="search" placeholder="Search for Product" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit">Search</button>
+          <button className="btn btn-outline-success"  data-bs-dismiss= "offcanvas" type="submit">Search</button>
         </form>
       </div>
+      
     </div>
   </div>
 </nav>

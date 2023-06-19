@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 // import image1 from '../images/dailytoxelixir3.png';
 // import image2 from '../images/hairoil.png';
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 import Carousel from 'react-bootstrap/Carousel';
 // import imagee from '../images/'
 
@@ -20,10 +20,11 @@ function UseproductFect() {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
-
+console.log(require(`../images/loader-waiting.gif`));
   // console.log(`${primaryURL}/data`);
   // console.log(age);
   let text=`Product added to Cart, Do you want to view the cart?`
+  
 // console.log(checker);
 const confirmation=()=>{
   if(window.confirm(text)){
@@ -33,9 +34,12 @@ const confirmation=()=>{
   }
 }
   const history = useHistory();
-  const url=`${primaryURL}/data`
+  const url=`${primaryURL}/data`;
+  const url2=`http://localhost:3000/data`
+  const cartURL=`${primaryURL}/addtocart`;
+  const testCartURL=`http://localhost:3000/addtocart`
   const {isPending:isLoading, error, products}=UseFetch(url);
-  console.log(products);
+  // console.log(products);
   // const images=[
   //   image1,
   //   image2
@@ -53,9 +57,12 @@ const confirmation=()=>{
       image:e.target.image.value
     };
 
-
-    axios.post(`${primaryURL}/addtocart`, allFeactures)
-    .then((res)=>{
+    axios ({
+      method: 'POST',
+      data:allFeactures,
+      withCredentials:true,
+      url:cartURL
+  }).then((res)=>{
       console.log(res);
       if(res.status===200){
         confirmation()
@@ -145,7 +152,7 @@ const confirmation=()=>{
 <div >{isLoading && <p className='loadingImage'> <img style={{width:'100%', height:'100%'}} className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div>
     <div>{error && <p>{error}</p>}</div> 
 
-   {products && <div className="frontal"> <main style={{color:'#008037'}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>}
+   {products && <div className="frontal"> <main style={{color:'#008037', display:"none"}}>HAIR AND SKIN CARE PRODUCTS WITHOUT HARSH CHEMICAL INGREDIENTS</main></div>}
 <div className="row row-cols-1 row-cols-md-3 g-4">
 {products && products.map((product, i)=>{
    
@@ -220,6 +227,7 @@ const confirmation=()=>{
       </div>
     </div>
   </div>
+ 
 
   {/* begin */}
  

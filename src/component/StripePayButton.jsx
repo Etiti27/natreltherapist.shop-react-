@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useHistory, Redirect  } from 'react-router-dom'
 import BillingAddress from './ineffectiveComponents/BillingAddress'
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 
 
 function StripePayButton({cartItems}) {

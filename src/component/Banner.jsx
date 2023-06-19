@@ -4,7 +4,7 @@ import shannaHair from "../images/shanna.jpg";
 import UseFetch from './UseFetch';
 import loader from '../images/loader-waiting.gif'
 import { Link } from 'react-router-dom';
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 
 function Banner() {
    const url=`${primaryURL}/ourstory`

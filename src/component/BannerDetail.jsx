@@ -5,7 +5,7 @@ import UseFetch from './UseFetch'
 import loader from "../images/loader-waiting.gif"
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useHistory } from 'react-router-dom';
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 
 
 

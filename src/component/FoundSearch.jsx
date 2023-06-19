@@ -6,7 +6,7 @@ import hairElixir from "../images/hairelixir.png";
 import { Link, useHistory} from "react-router-dom";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import gobackarrow from "../images/gobackarrow.gif"
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import axios from 'axios'
 
@@ -16,10 +16,10 @@ function ProductDetail() {
    
    
    
-    const url=`${primaryURL}/searchedItem`
-    const url2="http://localhost:3000/searchedItem"
-    let {isPending:isLoading, error, products}=UseFetch(url);
-   console.log(products && products);
+    const searchedURL=`${primaryURL}/searchedItem`
+    
+    let {isPending:isLoading, error, products}=UseFetch(searchedURL);
+   console.log(products);
 
    let text=`Product added to Cart, Do you want to view the cart?`
    
@@ -51,8 +51,14 @@ function ProductDetail() {
   //       quantity:e.target.quantity.value,
   //       image:e.target.image.value
   //     };
-      axios.post(`${primaryURL}/addtocart`, allFeactures)
-      .then((res)=>{
+  const addToCartURL=`${primaryURL}/addtocart`;
+  axios({
+    method:"POST",
+    url:addToCartURL,
+    data:allFeactures,
+    withCredentials:true
+  })
+ .then((res)=>{
         if(res.status===200){
           confirmation()
           // history.push("/cart")

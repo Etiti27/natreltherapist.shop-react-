@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import UseFetch from './UseFetch';
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 import axios from 'axios';
 import loader from '../images/loader-waiting.gif';
 import { Link, useHistory } from 'react-router-dom';
@@ -18,8 +18,23 @@ function  AdminSection() {
   const [notFound, setNotFound] = useState(false)
   const [shipDate, setShipDate] = useState('')
 
-    const url = 'http://localhost:3000/admin';
-    const url2=`${primaryURL}/admin` ;
+    
+    const url=`${primaryURL}/user/admin` ;
+    const logout=`${primaryURL}/user/logout`
+
+    const logMeOut=()=>{
+      axios({
+        method:'POST',
+        url:logout,
+        withCredentials:true,
+
+      }).then((res)=>{
+        console.log(res.status);
+        if(res.status===200){
+          history.push('/login')
+        }
+      })
+    }
     
 // console.log(detail);
     const handleSubmit=(e)=>{
@@ -32,7 +47,7 @@ function  AdminSection() {
         method: 'POST',
         data:{clientId},
         withCredentials:true,
-        url:url2
+        url:url
     }
     ).then((res)=>{
       console.log(res);
@@ -41,7 +56,16 @@ function  AdminSection() {
         setNotFound(true)
         setIsLoading(false)
         setError(false)
-      }else{
+      }
+      else if(res.data===`not authenticated`){
+        
+        alert(`You're not currently login. pls login!`)
+            setTimeout(() => {
+              history.push('/login')
+            }, 1000);
+
+      }
+      else{
         setFound(true)
         setNotFound(false)
         setIsLoading(false)
@@ -61,15 +85,15 @@ function  AdminSection() {
     }    
     const detail=products && products.product;
     let text=`Item(s) has been shipped?`
-    const url3=`${primaryURL}/confirmshipping`
-    const url4= 'http://localhost:3000/confirmshipping'
+    const url2=`${primaryURL}/confirmshipping`
+  
     const shipped=`Shipped`
     const confirmShip=()=>{
       if(window.confirm(text)){
         setIsLoading(true)
         axios({
           method: 'POST',
-          url: url3,
+          url: url2,
           withCredentials:true,
           data:{shipped,clientId}
         }).then((res)=>{
@@ -95,6 +119,8 @@ function  AdminSection() {
   return (
     <div style={{paddingTop:'20px', paddingBottom:'50px'}}>
     <div className="title">
+    {/* <button onClick={viewAll} className="btn btn-success">view all ordered products</button> */}
+   <button className='btn btn-success floater' onClick={logMeOut}>logout</button>
     <h1 style={{color:'#008037'}} >DASHBOARD</h1>
         
         <form onSubmit={handleSubmit} style={{paddingBottom:'30px'}}>
@@ -107,7 +133,7 @@ function  AdminSection() {
         {found && products && <div>
           <table style={{width:'100%'}} >
             <tr style={{backgroundColor:"green", color:"white"}}>
-              <th>UserID</th>
+              <th>orderID</th>
               <th>Name </th>
               <th>Address</th>
               <th>Email</th>
@@ -119,7 +145,7 @@ function  AdminSection() {
               
             </tr>
             <tr>
-              <td>{products.userID}</td>
+              <td>{products.orderID}</td>
               <td>{products.lastName} {products.firstName}</td>
               <td>{products.address} {products.city} {products.country}</td>
               <td>{products.email}</td>
@@ -136,7 +162,7 @@ function  AdminSection() {
                   </table>
                 )
               })}</td>
-              <td>€{products.amountSpent}.00</td>
+              <td>€{JSON.stringify(products.amountSpent).split(" ")}</td>
               <td>{products.date}</td>
               <td>{products.shipDate}</td>
               <td>{products.status ==='Shipped' ? <button  onClick={confirmShip} disabled id="shipped" className="btn btn-success">{products.status}</button>:<button onClick={confirmShip} id="shipped" className="btn btn-success">{products.status}</button> }</td>

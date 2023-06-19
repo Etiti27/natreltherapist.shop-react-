@@ -12,16 +12,17 @@ function UseFetch(url) {
     
    
    useEffect(()=>{
-    
+    const abortCount= new AbortController()
         axios({
             url:url,
-            withCredentials:false,
-            method:'GET',
-        })
+            withCredentials:true,
+            method:'GET',  
+        },{signal:abortCount.signal})
     .then((response)=>{
         
         if(response.status !==200){
             setIsPending(false)
+
             throw Error(`can't get resources from ${url}`)
             
         }
@@ -33,10 +34,16 @@ function UseFetch(url) {
         }   
     })
     .catch((err)=>{
+        if(err.message==="AbortError"){
+            console.log(`fetch aborted`);
+        }else{
         setError(err.message)
-        setIsPending(false)
+        setIsPending(false) 
         setProduct(null)
+        }
+        
     })
+    return ()=>abortCount.abort()
     
     
         

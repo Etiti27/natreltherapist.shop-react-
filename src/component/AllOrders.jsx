@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { primaryURL } from '../../Config';
+import { primaryURL } from './Config';
 import axios from 'axios';
 import loader from '../images/loader-waiting.gif';
 import goodMarkIcon from '../images/goodmarkicon.png';
@@ -11,10 +11,11 @@ function AllOrders() {
     const [orders, setOrders]=useState([]);
     const [found, setFound] = useState(true);
     const [clientId, setClientId] = useState('');
-    const url=`http://localhost:3000/allorders`;
-    const url2=`${primaryURL}/allorders`;
-    const url3=`${primaryURL}/confirmshipping`;
-    const url4= 'http://localhost:3000/confirmshipping';
+    
+    const url2=`${primaryURL}/user/allorders`;
+    const url3=`${primaryURL}/user/confirmshipping`;
+    const logout=`${primaryURL}/user/logout`
+    
     const shipped=`Shipped`;
     
     const check=()=>{
@@ -60,14 +61,37 @@ function AllOrders() {
         
       }
     }
+    const logMeOut=()=>{
+      axios({
+        method:'POST',
+        url:logout,
+        withCredentials:true,
+
+      }).then((res)=>{
+        console.log(res.status);
+        if(res.status===200){
+          history.push('/login')
+        }
+      })
+    }
     
         axios({
             method: 'GET',
             url:url2,
             withCredentials: true
         }).then((res)=>{
+          if(res.data===`not authenticated`){
+            alert(`You're not currently login. pls login!`)
+            setTimeout(() => {
+              history.push('/login')
+            }, 1000);
+           
+          }else{
+            console.log(res.data);
            setOrders(res.data)
            setFound(false)
+          }
+          
         })
         
     
@@ -85,7 +109,7 @@ function AllOrders() {
     orders.length > 0  && orders.map((order) => {
         return <div>
         <tr style={{backgroundColor:"green", color:"white"}}>
-    <th>UserID</th>
+    <th>orderID</th>
     <th>Name </th>
     <th>Address</th>
     <th>Email</th>
@@ -96,7 +120,7 @@ function AllOrders() {
     <th>Status</th>
     </tr>
     <tr >
-    <td>{order.userID}</td>
+    <td>{order.orderID}</td>
     <td>{order.lastName} {order.firstName}</td>
     <td>{order.address} {order.city} {order.country}</td>
     <td>{order.email}</td>
@@ -114,11 +138,11 @@ function AllOrders() {
                   </table>
                 )
               })}</td>
-              <td>€{order.amountSpent}.00</td>
+              <td>€{order.amountSpent.split('',2)}.00</td>
     <td>{order.date}</td>
     <td>{order.shipDate}</td>
     
-    <td>{order.status ==='Shipped' ? <div><button   disabled id="shipped" className="btn btn-success">{order.status} </button><img width="20%" height=""src={goodMarkIcon}/></div>:<div ><button onClick={(e)=>{confirmShip(e,order.userID)}} id="shipped" className="btn btn-success">{order.status}</button><img width="20%" height=""src={badMarkIcon} /></div> }</td> 
+    <td>{order.status ==='Shipped' ? <div><button   disabled id="shipped" className="btn btn-success">{order.status} </button><img width="20%" height=""src={goodMarkIcon}/></div>:<div ><button onClick={(e)=>{confirmShip(e,order.orderID)}} id="shipped" className="btn btn-success">{order.status}</button><img width="20%" height=""src={badMarkIcon} /></div> }</td> 
             
     </tr> 
     
@@ -126,7 +150,7 @@ function AllOrders() {
     })
    }
 </table>
-   
+<button className='btn btn-success floater' onClick={logMeOut}>logout</button>
     </div>
   )
  

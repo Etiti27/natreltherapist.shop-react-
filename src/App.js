@@ -37,6 +37,7 @@ import AdminSection from './component/AdminSection';
 import DescriptionAlerts from './component/DescriptionAlerts';
 import AllOrders from './component/AllOrders';
 import NewNav from './component/NewNav';
+import Four04 from './component/Four04';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -89,6 +90,7 @@ function App() {
       <Route exact path='/adminsection' > <AdminSection /></Route>
       <Route exact path='/allorders' > <AllOrders /></Route>
       <Route exact path='/newnav'> <NewNav /> </Route>
+      <Route path='*'><Four04 /></Route>
 
       
       </Switch>

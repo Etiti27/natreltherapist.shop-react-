@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Axios from 'axios'
-import { primaryURL } from '../../Config';
+import { primaryURL } from './Config';
 import { Link, useHistory } from 'react-router-dom';
 
 function Login() {
@@ -15,13 +15,13 @@ const handleLogin =(e)=>{
 
 const userPassword={username, password}
 console.log(userPassword);
-const url=`${primaryURL}/login`
-const url2= 'http://localhost:3000/login'
+const loginURL=`${primaryURL}/user/login`
+
 Axios({
     method: "POST",
     data: userPassword,
     withCredentials: true,
-    url: url,
+    url: loginURL,
   }).then((res) => {
     console.log(res);
     if(res.status!==200){

@@ -3,7 +3,7 @@ import {Formik, Form, Field,ErrorMessage} from "formik"
 import * as Yup from "yup"
 import Axios from 'axios';
 import { useHistory} from "react-router-dom"
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 
 
 
@@ -11,7 +11,7 @@ function Register() {
   const [foundUser, setFoundUser]= useState(false)
     const history= useHistory()
    const url='http://localhost:3000/register'
-    const url2=`${primaryURL}/register`
+    const url2=`${primaryURL}/user/register`
     const handleSubmit =(data)=>{
      console.log(data);
      Axios({

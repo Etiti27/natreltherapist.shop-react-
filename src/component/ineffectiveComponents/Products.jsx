@@ -11,7 +11,7 @@ import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import FormHelperText from '@mui/material/FormHelperText'
 import axios from 'axios';
-import { primaryURL, age } from '../../../Config';
+import { primaryURL, age } from '../Config';
 
 
 

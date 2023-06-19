@@ -9,11 +9,12 @@ import gobackarrow from "../images/gobackarrow.gif";
 import axios from "axios";
 import image1 from '../images/HairElixir3.png';
 import image2 from '../images/dailytoxin.png';
-import { primaryURL, age } from '../../Config';
+import { primaryURL, age } from './Config';
 
 
 
 function ProductDetail() {
+  const addTocart=`${primaryURL}/addtocart`
    let text=`Product added to Cart, Do you want to view the cart?`
    
    const confirmation=()=>{
@@ -48,8 +49,14 @@ function ProductDetail() {
   //       quantity:e.target.quantity.value,
   //       image:e.target.image.value
   //     };
-      axios.post(`${primaryURL}/addtocart`, allFeactures)
-      .then((res)=>{
+
+  axios({
+    method:'POST',
+    withCredentials:true,
+    data:allFeactures,
+    url:addTocart
+  })
+ .then((res)=>{
         if(res.status===200){
           confirmation()
           // history.push("/cart")
@@ -59,8 +66,8 @@ function ProductDetail() {
 
    const history = useHistory()
    const {name}= useParams()
-    const url=`${primaryURL}/data/${name}`
-    const url2=`http://localhost:3000/data/${name}`
+    const url=`${primaryURL}/details/readmore/${name}`
+    const url2=`http://localhost:3000/data/details/${name}`
     const {isPending:isLoading, error, products}=UseFetch(url);
    
    console.log(products);
@@ -96,8 +103,12 @@ function ProductDetail() {
                                     
                                   
                                </div>
-                               
+                              
                             </div>
+                             <div>
+                              <h3  className="price_text1" > <span className="price_text sale-price">€{product.salePrice} &nbsp;</span><span className='price' style={{textDecoration:'line-through'}}>€{product.price}</span>  </h3>
+                              
+                              </div>
                             <form onSubmit={handleCart}>
                                 <input type="hidden"   name="name" value={product.name} />
                                 
@@ -112,15 +123,12 @@ function ProductDetail() {
                                 <input type="hidden" name="id"  value={product._id}/>
                               
                               
-                                <button style={{marginLeft:"50%", marginTop:"30px"}}>
+                                <button style={{float:"right"}}>
                                 <div className="btn btn-success" ><AddShoppingCartIcon /> Buy Now </div>  
                                 </button>
                                 
                               </form>
-                              <div>
-                              <h3  className="price_text1" > <span className="price_text sale-price">€{product.salePrice} &nbsp;</span><span className='price' style={{textDecoration:'line-through'}}>€{product.price}</span>  </h3>
                               
-                              </div>
 
                          </div>
                   
