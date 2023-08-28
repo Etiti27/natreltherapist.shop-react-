@@ -13,13 +13,10 @@ function UseFetch(url) {
    
    useEffect(()=>{
     const abortCount= new AbortController()
-        axios({
-            url:url,
-            withCredentials:true,
-            method:'GET',  
-        },{signal:abortCount.signal})
-    .then((response)=>{
-        
+    axios.get(url, 
+         {withCredentials: true},
+         {signal:abortCount.signal})
+        .then((response)=>{
         if(response.status !==200){
             setIsPending(false)
 

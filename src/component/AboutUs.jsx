@@ -9,6 +9,23 @@ function AboutUs() {
     
   return (
     <div className="all-content">
+      
+  {/* <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    
+  </div>
+</div> */}
       <h1 className="title">OUR STORY</h1>
       <p>
       Na'trel Therapy is a successor brand that was formed from our founder's pure passion for an healthy natural hair journey. Our existence since about two decades offering natural hair care product is a foundation on which Na'trel Therapy was established. 
@@ -54,6 +71,9 @@ function AboutUs() {
     <li>Consultation</li>
   </ul>
 </p>
+
+ 
+
 <button><img className="gobackarrow" src={gobackarrow} alt="go back arrow" onClick={()=>{history.go(-1)}}/> </button>
    </div>
   )

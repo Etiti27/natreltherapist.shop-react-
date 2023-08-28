@@ -109,6 +109,7 @@ const emailValidate=(e)=>{
     </div>
     </div>
   </div>
+  
 
     </div>
   )

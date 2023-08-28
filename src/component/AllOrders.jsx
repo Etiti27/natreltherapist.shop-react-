@@ -138,7 +138,7 @@ function AllOrders() {
                   </table>
                 )
               })}</td>
-              <td>€{order.amountSpent.split('',2)}.00</td>
+              <td>€{order.amountSpent}.00</td>
     <td>{order.date}</td>
     <td>{order.shipDate}</td>
     

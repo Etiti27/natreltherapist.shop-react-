@@ -16,6 +16,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function UseproductFect() {
   const [index, setIndex] = useState(0);
+  const [modal, setModal]= useState(true);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -27,7 +28,13 @@ console.log(require(`../images/loader-waiting.gif`));
   
 // console.log(checker);
 const confirmation=()=>{
+  
+
+  
   if(window.confirm(text)){
+    
+  
+
     history.push('/cart');
   }else{
     history.push('/');
@@ -58,10 +65,12 @@ const confirmation=()=>{
     };
 
     axios ({
+      
+      url:cartURL,
       method: 'POST',
       data:allFeactures,
       withCredentials:true,
-      url:cartURL
+     
   }).then((res)=>{
       console.log(res);
       if(res.status===200){
@@ -77,6 +86,25 @@ const confirmation=()=>{
 
   return (
     <div>
+
+{modal && <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>}
+
 
     {/* <div className="home-route"> */}
     {/* <div >{isLoading && <p className='loadingImage'> <img style={{width:'100%', height:'100%'}} className='loadingImage' src={loader} alt="Loadingimage"/> </p>} </div> */}
@@ -230,6 +258,25 @@ const confirmation=()=>{
  
 
   {/* begin */}
+  <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
  
   {/* end */}
   </div>)
